@@ -1,9 +1,48 @@
 <html>
- 
+
+<head>
+    <title>Maria Warnes</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300">
+    <style>
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+            -webkit-font-smoothing: subpixel-antialiased;
+        }
+
+        body {
+            background-color: #5f5f5f;
+        }
+
+        h1 {
+            color: #fff;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 300;
+            font-size: 1.5em;
+            text-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+            width: 100%;
+            text-align: center;
+            transition: 2s;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position: absolute;
+        }
+
+        .starthide {
+            opacity: 0;
+        }
+    </style>
+</head>
+
 <body>
-  <h1>YOUR NAME</h1>
-  <p>Welcome to my website!</p>
-  <img src="https://content.codecademy.com/articles/github-pages-via-web-app/happy-ice-cream.gif" />
+    <h1 class="starthide">Coming Soon</h1>
 </body>
- 
+<script defer="true" type="text/javascript">
+        setTimeout(function () {
+            document.querySelector('h1').classList.remove('starthide');
+        }, 2000);
+</script>
+
 </html>
