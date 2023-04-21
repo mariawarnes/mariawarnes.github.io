@@ -9,7 +9,7 @@ function activateMessages(i) {
 
     setTimeout(function () {
         activateMessages(i + 1);
-    }, 1500);
+    }, 500);
 }
 
 activateMessages(0);
