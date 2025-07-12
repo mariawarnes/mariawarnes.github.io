@@ -172,6 +172,7 @@
     <input type="number" name="tymbark" value="2000" />
     <!-- ml -->
     <input type="number" name="lemonade" value="2400" />
+    <input type="number" name="tonic water" value="1500" />
     <!-- ml -->
     <input type="number" name="peach syrup" value="700" />
     <!-- ml -->
@@ -198,6 +199,7 @@
     <input type="number" name="mango juice" value="1000" />
     <!-- grams -->
     <input type="number" name="ice" value="9999" />
+    <input type="number" name="maple syrup" value="9999" />
     <!-- ml -->
     <input type="number" name="energy drink" value="330" />
     <!-- ml -->
@@ -220,15 +222,16 @@
     <!-- grams -->
     <input type="number" name="corn" value="9999" />
     <!-- units -->
-    <input type="number" name="magnum" value="0" />
+    <input type="number" name="magnum" value="6" />
     <!-- grams -->
-    <input type="number" name="peanuts" value="0" />
+    <input type="number" name="peanuts" value="550" />
     <!-- grams -->
     <input type="number" name="almonds" value="4" />
     <!-- grams -->
     <input type="number" name="breadsticks" value="250" />
     <!-- grams -->
     <input type="number" name="edamame" value="213" />
+    <input type="number" name="popcorn" value="9999" />
     <!-- units -->
     <input type="number" name="currant pop" value="2" />
     <input type="number" name="orange pop" value="2" />
@@ -239,9 +242,9 @@
     <!-- units -->
     <input type="number" name="croissant" value="6" />
     <!-- units -->
-    <input type="number" name="pain au chocolat" value="250" />
+    <input type="number" name="pain au chocolat" value="6" />
     <!-- units -->
-    <input type="number" name="cinnamon swirl" value="250" />
+    <input type="number" name="cinnamon swirl" value="6" />
 
     <!-- mains units -->
     <input type="number" name="rigatoni carbonara" value="2" />
@@ -261,6 +264,7 @@
 
     <input type="number" name="beetroot red velvet cake" value="1" />
     <input type="number" name="chocolate & hazelnut fondant" value="2" />
+    <input type="number" name="cheesecake" value="14" />
 
 
   </div>
@@ -291,9 +295,9 @@
 
   <div id="soft" class="category hidden">
     <h2>🧃 Softs, Bottled &amp; Canned</h2>
-    <div class="item" data-ingredients="corona cero:1" data-recipient="">
+    <!-- <div class="item" data-ingredients="corona cero:1" data-recipient="">
       <strong>Corona Cero</strong>
-    </div>
+    </div> -->
     <div class="item" data-ingredients="crodino:175" data-recipient="">
       <strong>Crodino</strong>
     </div>
@@ -301,10 +305,10 @@
       <strong>Aperitivo</strong>
     </div>
     <div class="item" data-ingredients="strawberry cider:330" data-recipient="">
-      <strong>Strawberry Cider</strong>
+      <strong>Strawberry &amp; Lime Cider</strong>
     </div>
     <div class="item" data-ingredients="impossibrew:440" data-recipient="">
-      <strong>Impossibrew</strong>
+      <strong>Impossibrew Lager</strong>
     </div>
     <div class="item" data-ingredients="tymbark:250" data-recipient="">
       <strong>Tymbark</strong>
@@ -377,14 +381,14 @@
         syrup, garnish.
       </details>
     </div>
-    <div class="item" data-ingredients="Corona Cero:100,lemonade:100,lime juice:10">
+    <div class="item" data-ingredients="impossibrew:100,lemonade:100,lime juice:10">
       <strong>🍺 Shan’ty</strong>
       <div class="meta">
-        Corona Cero, lemonade, lime juice — Zingy, light, fizzy
+        Impossibrew, lemonade, lime juice — Zingy, light, fizzy
       </div>
       <details>
         <summary>Instructions</summary>
-        Mix 100ml Corona Cero, 100ml lemonade and 10ml lime juice over ice.
+        Mix 100ml Impossibrew, 100ml lemonade and 10ml lime juice over ice.
       </details>
     </div>
     <div class="item" data-ingredients="peach syrup:15,alcohol-free merlot:100">
@@ -464,10 +468,10 @@
 
   <div id="mocktails" class="category hidden">
     <h2>🍹 Mocktails</h2>
-    <div class="item" data-ingredients="energy item:200,lime juice:10,ice:100">
+    <div class="item" data-ingredients="energy drink:200,lime juice:10,ice:100">
       <strong>🍒 Cherry Kick</strong>
       <div class="meta">
-        Cherry cola energy item, lime juice, ice — Punchy, fizzy, tart
+        Cherry cola energy drink, lime juice, ice — Punchy, fizzy, tart
       </div>
       <details>
         <summary>Instructions</summary>
@@ -1056,11 +1060,19 @@
 
   <div id="snacks" class="category hidden">
     <h2>🥜 Snacks</h2>
-    <div class="item" data-ingredients="crisps:1">
-      <strong> Crisps</strong>
-      <div class="meta">Flavours: Paprika</div>
+    <div class="item" data-ingredients="paprika crisps:50">
+      <strong>Crinkle Cut Paprika Crisps</strong>
     </div>
-    <div class="item" data-ingredients="corn:1">
+    <div class="item" data-ingredients="salted crisps:50">
+      <strong>Crinkle Cut Salted Crisps</strong>
+    </div>
+    <div class="item" data-ingredients="pepper crisps:50">
+      <strong>Salt &amp; Pepper Crisps</strong>
+    </div>
+    <div class="item" data-ingredients="triskis:50">
+      <strong>Triskis - Maize Corn Hoop Crisps</strong>
+    </div>
+    <div class="item" data-ingredients="corn:50">
       <strong>Fried Corn</strong>
     </div>
     <div class="item" data-ingredients="popcorn:150">
@@ -1068,32 +1080,29 @@
       <div class="meta">Flavours: Salted, Sweet & Salted, Sweet, Caramel, Dark Chocolate, Marshmallow, Cheese, Chilli,
         Cinnamon Sugar, Oregano Basil</div>
     </div>
-    <div class="item" data-ingredients="peanuts:1">
+    <div class="item" data-ingredients="peanuts:50">
       <strong>Roasted Salted Peanuts</strong>
     </div>
-    <div class="item" data-ingredients="almonds:1">
-      <strong>Salted Almonds</strong>
-    </div>
-    <div class="item" data-ingredients="breadsticks:1">
+    <div class="item" data-ingredients="breadsticks:20">
       <strong>Breadsticks</strong>
     </div>
-    <div class="item" data-ingredients="edamame:1">
+    <div class="item" data-ingredients="edamame:20">
       <strong>Salted Edamame</strong>
     </div>
   </div>
 
   <div id="breakfast" class="category hidden">
     <h2>🥞 Breakfast</h2>
-    <div class="item" data-ingredients="pancakes:6">
+    <div class="item" data-ingredients="pancakes:1">
       <strong>Protein Pancakes</strong>
     </div>
-    <div class="item" data-ingredients="croissant:6">
+    <div class="item" data-ingredients="croissant:1">
       <strong>Croissant</strong>
     </div>
-    <div class="item" data-ingredients="pain au chocolat:6">
+    <div class="item" data-ingredients="pain au chocolat:1">
       <strong>Pain au Chocolat</strong>
     </div>
-    <div class="item" data-ingredients="cinnamon swirl:6">
+    <div class="item" data-ingredients="cinnamon swirl:1">
       <strong>Cinnamon Swirl</strong>
     </div>
   </div>
