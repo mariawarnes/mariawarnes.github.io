@@ -149,83 +149,93 @@
 
   <div class="stock-panel">
     <!-- ml -->
-    <input type="number" name="orange juice" value="500" />
+    <input type="number" name="orange juice" value="1400" />
     <!-- ml -->
-    <input type="number" name="lime juice" value="500" />
+    <input type="number" name="lime juice" value="260" />
     <!-- ml -->
-    <input type="number" name="lemon juice" value="500" />
+    <input type="number" name="lemon juice" value="550" />
     <!-- ml -->
-    <input type="number" name="elderflower cordial" value="500" />
+    <input type="number" name="elderflower cordial" value="160" />
     <!-- grams -->
-    <input type="number" name="creamed coconut" value="0" />
+    <input type="number" name="creamed coconut" value="200" />
     <!-- ml -->
-    <input type="number" name="pineapple juice" value="0" />
+    <input type="number" name="pineapple juice" value="1000" />
     <!-- ml -->
-    <input type="number" name="vanilla extract" value="50" />
+    <input type="number" name="vanilla extract" value="45" />
     <!-- grams -->
-    <input type="number" name="dried mint" value="20" />
+    <input type="number" name="dried mint" value="8" />
     <!-- ml -->
     <input type="number" name="sangria syrup" value="700" />
     <!-- ml -->
     <input type="number" name="Corona Cero" value="0" />
+    <input type="number" name="crodino" value="1400" />
+    <input type="number" name="aperitivo" value="1750" />
+    <input type="number" name="impossibrew" value="3520" />
+    <input type="number" name="tymbark" value="2000" />
     <!-- ml -->
-    <input type="number" name="lemonade" value="500" />
+    <input type="number" name="lemonade" value="2400" />
     <!-- ml -->
     <input type="number" name="peach syrup" value="700" />
     <!-- ml -->
-    <input type="number" name="alcohol-free merlot" value="0" />
+    <input type="number" name="alcohol-free merlot" value="750" />
     <!-- grams -->
     <input type="number" name="sugar" value="9999" />
     <!-- shots -->
     <input type="number" name="espresso" value="9999" />
     <!-- grams -->
-    <input type="number" name="cocoa powder" value="500" />
+    <input type="number" name="cocoa powder" value="200" />
     <!-- ml -->
     <input type="number" name="plant milk" value="9999" />
     <!-- grams -->
     <input type="number" name="vanilla ice cream" value="0" />
     <!-- ml -->
-    <input type="number" name="whipped cream" value="0" />
+    <input type="number" name="whipped cream" value="200" />
     <!-- ml -->
-    <input type="number" name="caramel flavour" value="25" />
+    <input type="number" name="caramel flavour" value="15" />
     <!-- ml -->
-    <input type="number" name="peppermint extract" value="25" />
+    <input type="number" name="peppermint extract" value="35" />
     <!-- units -->
-    <input type="number" name="banana" value="0" />
+    <input type="number" name="banana" value="8" />
     <!-- ml -->
-    <input type="number" name="mango juice" value="0" />
+    <input type="number" name="mango juice" value="1000" />
     <!-- grams -->
     <input type="number" name="ice" value="9999" />
     <!-- ml -->
-    <input type="number" name="energy item" value="330" />
+    <input type="number" name="energy drink" value="330" />
     <!-- ml -->
-    <input type="number" name="strawberry cider" value="0" />
+    <input type="number" name="strawberry cider" value="1200" />
     <!-- ml -->
-    <input type="number" name="peach iced tea" value="0" />
+    <input type="number" name="peach iced tea" value="500" />
     <!-- ml -->
-    <input type="number" name="double cream" value="0" />
+    <input type="number" name="double cream" value="250" />
     <!-- ml -->
     <input type="number" name="vanilla extract" value="50" />
     <!-- ml -->
-    <input type="number" name="ginger dram" value="0" />
+    <input type="number" name="ginger dram" value="250" />
     <!-- ml -->
-    <input type="number" name="coke zero" value="0" />
-    <!-- units -->
-    <input type="number" name="crisps" value="4" />
-    <!-- units -->
+    <input type="number" name="coke zero" value="4950" />
+    <!-- grams -->
+    <input type="number" name="paprika crisps" value="280" />
+    <input type="number" name="salted crisps" value="150" />
+    <input type="number" name="pepper crisps" value="150" />
+    <input type="number" name="triskis" value="360" />
+    <!-- grams -->
     <input type="number" name="corn" value="9999" />
     <!-- units -->
     <input type="number" name="magnum" value="0" />
-    <!-- units -->
+    <!-- grams -->
     <input type="number" name="peanuts" value="0" />
-    <!-- units -->
+    <!-- grams -->
     <input type="number" name="almonds" value="4" />
+    <!-- grams -->
+    <input type="number" name="breadsticks" value="250" />
+    <!-- grams -->
+    <input type="number" name="edamame" value="213" />
     <!-- units -->
-    <input type="number" name="breadsticks" value="4" />
-    <!-- units -->
-    <input type="number" name="edamame" value="4" />
-    <!-- units -->
-    <input type="number" name="pops" value="8" />
+    <input type="number" name="currant pop" value="2" />
+    <input type="number" name="orange pop" value="2" />
+    <input type="number" name="summer pop" value="2" />
+    <input type="number" name="apple pop" value="2" />
     <!-- units -->
     <input type="number" name="pancakes" value="6" />
     <!-- units -->
@@ -260,6 +270,7 @@
   <nav>
     <h2>Drinks</h2>
     <ul>
+      <li data-target="soft">Softs, Bottles &amp; Canned</li>
       <li data-target="classic">Classic Mocktails</li>
       <li data-target="mocktails">Mocktails</li>
       <li data-target="shakes">Shakes &amp; Floats</li>
@@ -272,12 +283,39 @@
   <nav>
     <h2>Food</h2>
     <ul>
+      <li data-target="lollies">Ice Creams &amp; Lollies</li>
       <li data-target="snacks">Snacks</li>
       <li data-target="breakfast">Breakfast</li>
       <li data-target="mains">Mains</li>
       <li data-target="desserts">Desserts</li>
     </ul>
   </nav>
+
+  <div id="soft" class="category hidden">
+    <h2>🧃 Softs, Bottled &amp; Canned</h2>
+    <div class="item" data-ingredients="corona cero:1" data-recipient="">
+      <strong>Corona Cero</strong>
+    </div>
+    <div class="item" data-ingredients="crodino:175" data-recipient="">
+      <strong>Crodino</strong>
+    </div>
+    <div class="item" data-ingredients="aperitivo:250" data-recipient="">
+      <strong>Aperitivo</strong>
+    </div>
+    <div class="item" data-ingredients="strawberry cider:330" data-recipient="">
+      <strong>Strawberry Cider</strong>
+    </div>
+    <div class="item" data-ingredients="impossibrew:440" data-recipient="">
+      <strong>Impossibrew</strong>
+    </div>
+    <div class="item" data-ingredients="tymbark:250" data-recipient="">
+      <strong>Tymbark</strong>
+    </div>
+    <div class="item" data-ingredients="coke zero:330" data-recipient="">
+      <strong>Coke Zero</strong>
+    </div>
+  </div>
+
 
   <div id="classic" class="category">
     <h2>🍸 Classic Mocktails</h2>
@@ -999,16 +1037,27 @@
     </div>
   </div>
 
-  <div id="snacks" class="category hidden">
-    <h2>🥜 Snacks</h2>
-    <div class="item" data-ingredients="pops:1">
-      <strong>🍭 Ice Pops</strong>
-      <div class="meta">Flavours: Apple &amp; Blackcurrant, Orange, Summer Fruits and Apple</div>
+  <div id="lollies" class="category hidden">
+    <h2>🍧 Ice Creams & Lollies</h2>
+    <div class="item" data-ingredients="currant pop:1">
+      <strong>🍎 Apple &amp; Blackcurrant Ice Pop</strong>
+    </div>
+    <div class="item" data-ingredients="orange pop:1">
+      <strong>🍊 Orange Ice Pop</strong>
+    </div>
+    <div class="item" data-ingredients="summer pop:1">
+      <strong>🍓 Summer Fruits Ice Pop</strong>
+    </div>
+    <div class="item" data-ingredients="apple pop:1">
+      <strong>🍏 Apple Ice Pop</strong>
     </div>
     <div class="item" data-ingredients="magnum:1">
-      <strong>🍨 Magnums</strong>
-      <div class="meta">Flavours: Classic</div>
+      <strong>🍨 Classic Magnum</strong>
     </div>
+  </div>
+
+  <div id="snacks" class="category hidden">
+    <h2>🥜 Snacks</h2>
     <div class="item" data-ingredients="crisps:1">
       <strong> Crisps</strong>
       <div class="meta">Flavours: Paprika</div>
