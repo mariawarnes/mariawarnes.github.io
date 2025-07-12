@@ -68,6 +68,19 @@
     .stock-panel {
       display: none;
     }
+
+    /* Improve mobile layout */
+    @media (max-width: 600px) {
+      nav ul {
+        flex-wrap: wrap;
+      }
+      nav li {
+        flex: 1 1 50%;
+      }
+      .item {
+        padding-right: 0;
+      }
+    }
   </style>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
