@@ -9,25 +9,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#3d3d3d',
-            accent: '#c59d5f'
-          },
-          fontFamily: {
-            sans: ['Montserrat', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
+
 
   <style>
-    /* Reset and base styles (you may already have these elsewhere) */
+    :root {
+      --primary: #3d3d3d;
+      --accent: #c59d5f;
+      --border: #D1D5DB;
+    }
+
     *,
     *::before,
     *::after {
@@ -38,19 +28,22 @@
 
     /* Body */
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 300;
       color: var(--primary);
       max-width: 56rem;
       margin-left: auto;
       margin-right: auto;
       padding: 1.5rem;
+    }
 
+    .stock-panel {
+      display: none;
     }
 
     /* Headings */
     h1 {
-      font-size: 2.25rem !important;
+      font-size: 2.25rem;
       line-height: 2.5rem;
       text-align: center;
       color: var(--primary);
@@ -59,11 +52,11 @@
     }
 
     h2 {
-      font-size: 1.5rem !important;
+      font-size: 1.75rem;
       line-height: 2rem;
       color: var(--primary);
       margin-top: 2rem;
-      margin-bottom: .5rem;
+      margin-bottom: 2rem;
     }
 
     /* Navigation */
@@ -76,8 +69,8 @@
       flex-wrap: wrap;
       align-items: center;
       list-style: none;
-      border-top: 1px solid #D1D5DB;
-      border-bottom: 1px solid #D1D5DB;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       padding-top: 1rem;
       padding-bottom: 1rem;
       margin-bottom: 1.5rem;
@@ -87,7 +80,7 @@
 
     nav ul li {
       cursor: pointer;
-      color: var(--primary);
+      color: var(--accent);
       margin-right: 1rem;
       margin-bottom: .25rem;
       width: 50%;
@@ -96,12 +89,7 @@
     @media (min-width: 768px) {
       nav ul li {
         width: auto;
-
       }
-    }
-
-    nav ul li:hover {
-      color: var(--accent);
     }
 
     /* Categories */
@@ -117,7 +105,7 @@
       font-size: 1.25rem;
       line-height: 1.75rem;
       color: var(--primary);
-      border-bottom: 1px solid var(--accent);
+      border-bottom: 1px solid var(--border);
       margin-top: 2rem;
       margin-bottom: 1rem;
       padding-bottom: .5rem;
@@ -126,10 +114,9 @@
     /* Items */
     .item {
       margin-bottom: 1.5rem;
-
       position: relative;
       padding-right: 140px;
-      border-bottom: 1px solid #D1D5DB;
+      border-bottom: 1px solid var(--border);
       padding-bottom: 1rem;
     }
 
@@ -143,14 +130,34 @@
       margin-right: .5rem;
     }
 
+    div.meta {
+      font-size: .875rem;
+      line-height: 1.25rem;
+      font-weight: 200;
+      margin-top: .25rem;
+    }
+
+    summary,
+    details {
+      font-size: .875rem;
+      cursor: pointer;
+      font-weight: 200;
+      margin-top: .5rem;
+    }
+
+    summary {
+      color: var(--accent);
+    }
+
     /* Badges */
     .badge {
       display: inline-block;
-      background-color: #9a7611;
-      color: #ffffff;
+      background-color: var(--accent);
+      color: white;
       padding: .25rem .5rem;
       font-weight: 400;
       font-size: .875rem;
+      margin-right: .5rem;
     }
   </style>
   <script>
@@ -230,93 +237,93 @@
 <body>
   <h1>Bar Marwar Menu</h1>
 
-  <div class="stock-panel hidden">
+  <div class="stock-panel">
     <!-- ml -->
-    <input type="number" name="orange juice" value="1400" />
-    <input type="number" name="lime juice" value="260" />
-    <input type="number" name="lemon juice" value="550" />
-    <input type="number" name="elderflower cordial" value="160" />
-    <input type="number" name="pineapple juice" value="1000" />
-    <input type="number" name="vanilla extract" value="45" />
-    <input type="number" name="sangria syrup" value="700" />
+    <input type="number" name="orange juice" value="1" />
+    <input type="number" name="lime juice" value="1" />
+    <input type="number" name="lemon juice" value="1" />
+    <input type="number" name="elderflower cordial" value="1" />
+    <input type="number" name="pineapple juice" value="1" />
+    <input type="number" name="vanilla extract" value="1" />
+    <input type="number" name="sangria syrup" value="1" />
     <input type="number" name="Corona Cero" value="0" />
-    <input type="number" name="crodino" value="1400" />
-    <input type="number" name="aperitivo" value="1500" />
-    <input type="number" name="impossibrew" value="3520" />
-    <input type="number" name="tymbark" value="1750" />
-    <input type="number" name="lemonade" value="2400" />
-    <input type="number" name="tonic water" value="1500" />
-    <input type="number" name="peach syrup" value="700" />
-    <input type="number" name="alcohol-free merlot" value="750" />
-    <input type="number" name="plant milk" value="9999" />
-    <input type="number" name="whipped cream" value="200" />
-    <input type="number" name="caramel flavour" value="15" />
-    <input type="number" name="peppermint extract" value="35" />
-    <input type="number" name="mango juice" value="1000" />
-    <input type="number" name="ice" value="9999" />
-    <input type="number" name="maple syrup" value="9999" />
-    <input type="number" name="energy drink" value="330" />
-    <input type="number" name="strawberry cider" value="1200" />
-    <input type="number" name="peach iced tea" value="500" />
-    <input type="number" name="double cream" value="250" />
-    <input type="number" name="vanilla extract" value="50" />
-    <input type="number" name="ginger dram" value="250" />
-    <input type="number" name="coke zero" value="4950" />
+    <input type="number" name="crodino" value="1" />
+    <input type="number" name="aperitivo" value="1" />
+    <input type="number" name="impossibrew" value="1" />
+    <input type="number" name="tymbark" value="1" />
+    <input type="number" name="lemonade" value="1" />
+    <input type="number" name="tonic water" value="1" />
+    <input type="number" name="peach syrup" value="1" />
+    <input type="number" name="alcohol-free merlot" value="1" />
+    <input type="number" name="plant milk" value="1" />
+    <input type="number" name="whipped cream" value="1" />
+    <input type="number" name="caramel flavour" value="1" />
+    <input type="number" name="peppermint extract" value="1" />
+    <input type="number" name="mango juice" value="1" />
+    <input type="number" name="ice" value="1" />
+    <input type="number" name="maple syrup" value="1" />
+    <input type="number" name="energy drink" value="1" />
+    <input type="number" name="strawberry cider" value="1" />
+    <input type="number" name="peach iced tea" value="1" />
+    <input type="number" name="double cream" value="1" />
+    <input type="number" name="vanilla extract" value="1" />
+    <input type="number" name="ginger dram" value="1" />
+    <input type="number" name="coke zero" value="1" />
 
     <!-- grams -->
-    <input type="number" name="creamed coconut" value="200" />
-    <input type="number" name="dried mint" value="8" />
-    <input type="number" name="sugar" value="9999" />
-    <input type="number" name="cocoa powder" value="200" />
-    <input type="number" name="espresso" value="9999" />
+    <input type="number" name="creamed coconut" value="1" />
+    <input type="number" name="dried mint" value="1" />
+    <input type="number" name="sugar" value="1" />
+    <input type="number" name="cocoa powder" value="1" />
+    <input type="number" name="espresso" value="1" />
     <input type="number" name="vanilla ice cream" value="0" />
-    <input type="number" name="paprika crisps" value="280" />
-    <input type="number" name="salted crisps" value="150" />
-    <input type="number" name="pepper crisps" value="150" />
-    <input type="number" name="triskis" value="360" />
-    <input type="number" name="corn" value="9999" />
-    <input type="number" name="peanuts" value="500" />
-    <input type="number" name="breadsticks" value="200" />
-    <input type="number" name="edamame" value="213" />
-    <input type="number" name="popcorn" value="9999" />
+    <input type="number" name="paprika crisps" value="1" />
+    <input type="number" name="salted crisps" value="1" />
+    <input type="number" name="pepper crisps" value="1" />
+    <input type="number" name="triskis" value="1" />
+    <input type="number" name="corn" value="1" />
+    <input type="number" name="peanuts" value="1" />
+    <input type="number" name="breadsticks" value="1" />
+    <input type="number" name="edamame" value="1" />
+    <input type="number" name="popcorn" value="1" />
 
     <!-- units -->
-    <input type="number" name="banana" value="8" />
-    <input type="number" name="magnum" value="6" />
-    <input type="number" name="currant pop" value="3" />
-    <input type="number" name="orange pop" value="3" />
-    <input type="number" name="summer pop" value="3" />
-    <input type="number" name="apple pop" value="3" />
-    <input type="number" name="pancakes" value="6" />
-    <input type="number" name="croissant" value="6" />
-    <input type="number" name="pain au chocolat" value="6" />
-    <input type="number" name="cinnamon swirl" value="6" />
+    <input type="number" name="banana" value="1" />
+    <input type="number" name="magnum" value="1" />
+    <input type="number" name="currant pop" value="1" />
+    <input type="number" name="orange pop" value="1" />
+    <input type="number" name="summer pop" value="1" />
+    <input type="number" name="apple pop" value="1" />
+    <input type="number" name="pancakes" value="1" />
+    <input type="number" name="croissant" value="1" />
+    <input type="number" name="pain au chocolat" value="1" />
+    <input type="number" name="cinnamon swirl" value="1" />
 
     <!-- mains units -->
     <input type="number" name="rigatoni carbonara" value="2" />
     <input type="number" name="spring green orzo" value="1" />
     <input type="number" name="golden roast potatoes" value="1" />
     <input type="number" name="buddha bowl" value="1" />
-    <input type="number" name="roast dinner" value="2" />
-    <input type="number" name="rainbow tofu bowl" value="1" />
+    <input type="number" name="roast dinner" value="1" />
+    <input type="number" name="rainbow tofu bowl" value="0" />
     <input type="number" name="mushroom stroganoff" value="1" />
     <input type="number" name="sweetcorn & smoky bacon bake" value="1" />
     <input type="number" name="cauli korma" value="1" />
     <input type="number" name="not-a-chicken tikka masala" value="1" />
     <input type="number" name="jerk tofu bowl" value="1" />
-    <input type="number" name="lebanese style bowl" value="2" />
+    <input type="number" name="lebanese style bowl" value="1" />
     <input type="number" name="polpette alfredo" value="1" />
     <input type="number" name="yaki-miso udon noodles" value="1" />
 
     <!-- dessert units -->
-    <input type="number" name="beetroot red velvet cake" value="1" />
-    <input type="number" name="chocolate & hazelnut fondant" value="2" />
-    <input type="number" name="cheesecake" value="14" />
-    <input type="number" name="zillionaire" value="4" />
+    <input type="number" name="beetroot red velvet cake" value="0" />
+    <input type="number" name="chocolate & hazelnut fondant" value="1" />
+    <input type="number" name="cheesecake" value="1" />
+    <input type="number" name="zillionaire" value="1" />
 
   </div>
 
-  <nav class="mb-8">
+  <nav>
     <h2>Drinks</h2>
     <ul>
       <li data-target="soft">Softs,
@@ -332,7 +339,7 @@
     </ul>
   </nav>
 
-  <nav class="mb-8">
+  <nav>
     <h2>Food</h2>
     <ul>
       <li data-target="lollies">Ice Creams &amp; Lollies</li>
@@ -343,33 +350,51 @@
     </ul>
   </nav>
 
-  <div id="soft" class="category space-y-4">
-    <h2>🧃 Softs, Bottled &amp; Canned
+  <div id="soft" class="category">
+    <h2>Softs, Bottled &amp; Canned
     </h2>
-    <div data-ingredients="crodino:175" data-recipient="">
-      <strong class="text-primary font-normal mr-2">Crodino</strong>
+    <div class="item" data-ingredients="crodino:1">
+      <strong>Crodino</strong>
+      <div class="meta">
+        Bitter, refreshing, Italian
+      </div>
     </div>
-    <div class="item" data-ingredients="aperitivo:250" data-recipient="">
-      <strong class="text-primary font-normal mr-2">Aperitivo</strong>
+    <div class="item" data-ingredients="aperitivo:1">
+      <strong>Aperitivo</strong>
+      <div class="meta">
+        Herbal, aromatic, Italian
+      </div>
     </div>
-    <div class="item" data-ingredients="strawberry cider:330" data-recipient="">
-      <strong class="text-primary font-normal mr-2">Strawberry &amp; Lime Cider</strong>
+    <div class="item" data-ingredients="strawberry cider:1">
+      <strong>Strawberry &amp; Lime Cider</strong>
+      <div class="meta">
+        Fruity, refreshing, British
+      </div>
     </div>
-    <div class="item" data-ingredients="impossibrew:440" data-recipient="">
-      <strong class="text-primary font-normal mr-2">Impossibrew Lager</strong>
+    <div class="item" data-ingredients="impossibrew:1">
+      <strong>Impossibrew Lager</strong>
+      <div class="meta">
+        Crisp, light, alcohol-free
+      </div>
     </div>
-    <div class="item" data-ingredients="tymbark:250" data-recipient="">
-      <strong class="text-primary font-normal mr-2">Tymbark</strong>
+    <div class="item" data-ingredients="tymbark:1">
+      <strong>Mango &amp; Apple Tymbark</strong>
+      <div class="meta">
+        Fruity, refreshing, Polish
+      </div>
     </div>
-    <div class="item" data-ingredients="coke zero:330" data-recipient="">
-      <strong class="text-primary font-normal mr-2">Coke Zero</strong>
+    <div class="item" data-ingredients="coke zero:1">
+      <strong>Coke Zero</strong>
+      <div class="meta">
+        Classic, refreshing, cola
+      </div>
     </div>
   </div>
 
-  <div id="classic" class="category hidden space-y-4">
-    <h2 class="text-xl text-primary border-b border-accent mb-4 mt-8 pb-2">🍸 Classic Mocktails</h2>
-    <div class="item" data-ingredients="peach syrup:20,lemon juice:20,orange juice:40,pineapple juice:20,lemonade:40">
-      <strong class="text-primary font-normal mr-2">🍊 Hugs on the Beach</strong>
+  <div id="classic" class="category">
+    <h2>Classic Mocktails</h2>
+    <div class="item" data-ingredients="peach syrup:1,lemon juice:1,orange juice:1,pineapple juice:1,lemonade:1">
+      <strong>Hugs on the Beach</strong>
       <div class="meta">
         Lemonade, peach syrup, lemon juice, orange juice, pineapple juice —
         Crisp, fruity, tropical
@@ -383,8 +408,8 @@
         twist.
       </details>
     </div>
-    <div class="item" data-ingredients="lime juice:20,elderflower cordial:20,orange juice:50">
-      <strong class="text-primary font-normal mr-2">🍋 White Kindapolitan</strong>
+    <div class="item" data-ingredients="lime juice:1,elderflower cordial:1,orange juice:1">
+      <strong>White Kindapolitan</strong>
       <div class="meta">
         Lime juice, elderflower cordial, orange juice — Zesty, floral, bright
       </div>
@@ -394,8 +419,8 @@
         Strain and garnish.
       </details>
     </div>
-    <div class="item" data-ingredients="creamed coconut:30,pineapple juice:150,vanilla extract:1">
-      <strong class="text-primary font-normal mr-2">🥥 Piña No-lada</strong>
+    <div class="item" data-ingredients="creamed coconut:1,pineapple juice:1,vanilla extract:1">
+      <strong>Piña No-lada</strong>
       <div class="meta">
         Creamed coconut, pineapple juice, vanilla — Creamy, tropical, sweet
       </div>
@@ -405,8 +430,8 @@
         vanilla extract until smooth.
       </details>
     </div>
-    <div class="item" data-ingredients="dried mint:1,lime juice:15,elderflower cordial:15,tonic water:150">
-      <strong class="text-primary font-normal mr-2">🍋 Nojito</strong>
+    <div class="item" data-ingredients="dried mint:1,lime juice:1,elderflower cordial:1,tonic water:1">
+      <strong>Nojito</strong>
       <div class="meta">
         Lime juice, dried mint, tonic water, elderflower cordial — Minty,
         cool, crisp
@@ -417,8 +442,8 @@
         juice and 15ml cordial, top with 150ml tonic water over ice.
       </details>
     </div>
-    <div class="item" data-ingredients="orange juice:100,mango juice:50,sangria syrup:10">
-      <strong class="text-primary font-normal mr-2">🍊 Tequiless Sunrise</strong>
+    <div class="item" data-ingredients="orange juice:1,mango juice:1,sangria syrup:1">
+      <strong>Tequiless Sunrise</strong>
       <div class="meta">
         Orange juice, mango juice, sangria syrup — Bright, layered, citrusy
       </div>
@@ -428,8 +453,8 @@
         syrup, garnish.
       </details>
     </div>
-    <div class="item" data-ingredients="impossibrew:100,lemonade:100,lime juice:10">
-      <strong class="text-primary font-normal mr-2">🍺 Shan’ty</strong>
+    <div class="item" data-ingredients="impossibrew:1,lemonade:1,lime juice:1">
+      <strong>Shan’ty</strong>
       <div class="meta">
         Impossibrew, lemonade, lime juice — Zingy, light, fizzy
       </div>
@@ -438,8 +463,8 @@
         Mix 100ml Impossibrew, 100ml lemonade and 10ml lime juice over ice.
       </details>
     </div>
-    <div class="item" data-ingredients="peach syrup:15,alcohol-free merlot:100">
-      <strong class="text-primary font-normal mr-2">🍑 Belli-no</strong>
+    <div class="item" data-ingredients="peach syrup:1,alcohol-free merlot:1">
+      <strong>Belli-no</strong>
       <div class="meta">
         peach syrup, alcohol-free merlot — Fruity, bright, bubbly
       </div>
@@ -448,8 +473,8 @@
         Pour 15ml syrup and top with 100ml merlot in a flute.
       </details>
     </div>
-    <div class="item" data-ingredients="lime juice:30,sugar:10,tonic water:150">
-      <strong class="text-primary font-normal mr-2">🍋 Caipiri-nah</strong>
+    <div class="item" data-ingredients="lime juice:1,sugar:1,tonic water:1">
+      <strong>Caipiri-nah</strong>
       <div class="meta">
         Lime juice, sugar, tonic water — Zesty, simple, Brazilian
       </div>
@@ -458,8 +483,8 @@
         Muddle sugar with 30ml lime juice, add 150ml tonic water over ice.
       </details>
     </div>
-    <div class="item" data-ingredients="espresso:50,vanilla extract:1,cocoa powder:2">
-      <strong class="text-primary font-normal mr-2">☕ Espresso Marti-no</strong>
+    <div class="item" data-ingredients="espresso:1,vanilla extract:1,cocoa powder:1">
+      <strong>Espresso Marti-no</strong>
       <div class="meta">
         Espresso, vanilla extract, cocoa powder — Strong, sweet, smooth
       </div>
@@ -469,8 +494,8 @@
         Strain.
       </details>
     </div>
-    <div class="item" data-ingredients="tonic water:150,lime juice:10,elderflower cordial:10">
-      <strong class="text-primary font-normal mr-2">🥂 Free &amp; T</strong>
+    <div class="item" data-ingredients="tonic water:1,lime juice:1,elderflower cordial:1">
+      <strong>Free &amp; T</strong>
       <div class="meta">
         Tonic water, lime juice, elderflower cordial — Botanical, crisp, clean
       </div>
@@ -479,8 +504,8 @@
         Combine 150ml tonic water, 10ml lime juice, 10ml cordial over ice.
       </details>
     </div>
-    <div class="item" data-ingredients="lime juice:20,lemon juice:10,orange juice:10,maple syrup:10,tonic water:150">
-      <strong class="text-primary font-normal mr-2">🍋 Margaritish</strong>
+    <div class="item" data-ingredients="lime juice:1,lemon juice:1,orange juice:1,maple syrup:1,tonic water:1">
+      <strong>Margaritish</strong>
       <div class="meta">
         Lime juice, lemon juice, orange juice, maple syrup, tonic water —
         Citrusy, tangy, spritzy
@@ -490,19 +515,19 @@
         Shake juices and syrup, strain over ice, top with 150ml tonic water.
       </details>
     </div>
-    <div class="item" data-ingredients="sangria syrup:50,alcohol-free merlot:50,orange juice:50">
-      <strong class="text-primary font-normal mr-2">🍇 Sans-gria</strong>
+    <div class="item" data-ingredients="sangria syrup:1,alcohol-free merlot:1,orange juice:1">
+      <strong>Sans-gria</strong>
       <div class="meta">
-        sangria syrup, alcohol-free merlot, orange juice — Bright, floral,
+        Sangria syrup, alcohol-free merlot, orange juice — Bright, floral,
         tangy
       </div>
       <details>
         <summary>Instructions</summary>
-        Stir 50ml syrup, 50ml merlot, 50ml orange juice over ice.
+        Stir 30ml sangria syrup, 100ml merlot, 100ml orange juice over ice.
       </details>
     </div>
-    <div class="item" data-ingredients="mango juice:50,lime juice:15,peach syrup:10,vanilla extract:1">
-      <strong class="text-primary font-normal mr-2">🥭 Popstar Marti-no</strong>
+    <div class="item" data-ingredients="mango juice:1,lime juice:1,peach syrup:1,vanilla extract:1">
+      <strong>Popstar Marti-no</strong>
       <div class="meta">
         Mango juice, lime juice, peach syrup, vanilla — Tropical, cheeky, fun
       </div>
@@ -513,10 +538,10 @@
     </div>
   </div>
 
-  <div id="mocktails" class="category hidden space-y-4">
-    <h2 class="text-xl text-primary border-b border-accent mb-4 mt-8 pb-2">🍹 Mocktails</h2>
-    <div class="item" data-ingredients="energy drink:200,lime juice:10,ice:100">
-      <strong class="text-primary font-normal mr-2">🍒 Cherry Kick</strong>
+  <div id="mocktails" class="category">
+    <h2>Mocktails</h2>
+    <div class="item" data-ingredients="energy drink:1,lime juice:1,ice:1">
+      <strong>Cherry Kick</strong>
       <div class="meta">
         Cherry cola energy drink, lime juice, ice — Punchy, fizzy, tart
       </div>
@@ -526,8 +551,8 @@
         juice, stir gently, and garnish with a cherry.
       </details>
     </div>
-    <div class="item" data-ingredients="lime juice:20,tonic water:150,ice:100">
-      <strong class="text-primary font-normal mr-2">🍋 Lime Lift</strong>
+    <div class="item" data-ingredients="lime juice:1,tonic water:1,ice:1">
+      <strong>Lime Lift</strong>
       <div class="meta">
         Lime juice, tonic water, ice — Sharp, bright, fizzy
       </div>
@@ -537,19 +562,18 @@
         water, stir, and garnish with a lime wedge.
       </details>
     </div>
-    <div class="item" data-ingredients="peach syrup:15,lemon juice:10,tonic water:150,ice:100">
-      <strong class="text-primary font-normal mr-2">🍑 Peachy Keen</strong>
+    <div class="item" data-ingredients="peach syrup:1,lemonade:1">
+      <strong>Peach Fizz</strong>
       <div class="meta">
-        Peach syrup, lemon juice, tonic water, ice — Fruity, light, sunny
+        Peach syrup, lemonade — Fruity, light, sunny
       </div>
       <details>
         <summary>Instructions</summary>
-        Stir 15ml peach syrup and 10ml lemon juice over 100g ice, top with
-        150ml tonic water, and garnish with a peach slice.
+        Stir 15ml peach syrup and 100ml lemonade over ice.
       </details>
     </div>
-    <div class="item" data-ingredients="lemonade:100,orange juice:100,lime juice:10,ice:100">
-      <strong class="text-primary font-normal mr-2">🍋 Sunset Soda</strong>
+    <div class="item" data-ingredients="lemonade:1,orange juice:1,lime juice:1,ice:1">
+      <strong>Sunset Soda</strong>
       <div class="meta">
         Lemonade, orange juice, lime juice, ice — Sparkly, sweet,
         tropical
@@ -560,8 +584,8 @@
         100g ice. Stir and garnish with citrus slices.
       </details>
     </div>
-    <div class="item" data-ingredients="creamed coconut:30,lime juice:20,lemonade:150,ice:100">
-      <strong class="text-primary font-normal mr-2">🥥 Coconut Crush</strong>
+    <div class="item" data-ingredients="creamed coconut:1,lime juice:1,lemonade:1,ice:1">
+      <strong>Coconut Crush</strong>
       <div class="meta">
         Creamed coconut, lime juice, lemonade, ice — Tropical, creamy, fizzy
       </div>
@@ -571,8 +595,8 @@
         smooth. Pour into a glass and top with 150ml lemonade.
       </details>
     </div>
-    <div class="item" data-ingredients="banana:1,lime juice:20,ice:100">
-      <strong class="text-primary font-normal mr-2">🍌 Banana Breeze</strong>
+    <div class="item" data-ingredients="banana:1,lime juice:1,ice:1">
+      <strong>Banana Breeze</strong>
       <div class="meta">Banana, lime juice, ice — Smooth, citrusy, light</div>
       <details>
         <summary>Instructions</summary>
@@ -580,8 +604,8 @@
         immediately.
       </details>
     </div>
-    <div class="item" data-ingredients="orange juice:50,peach syrup:15,lemonade:150,ice:100">
-      <strong class="text-primary font-normal mr-2">🍊 Orange Blush</strong>
+    <div class="item" data-ingredients="orange juice:1,peach syrup:1,lemonade:1,ice:1">
+      <strong>Orange Blush</strong>
       <div class="meta">
         Orange juice, peach syrup, lemonade, ice — Bright, fruity, soft
       </div>
@@ -591,8 +615,8 @@
         150ml lemonade, and garnish with an orange slice.
       </details>
     </div>
-    <div class="item" data-ingredients="strawberry cider:200,lime juice:10,ice:100">
-      <strong class="text-primary font-normal mr-2">🥤 Strawberry Fizz</strong>
+    <div class="item" data-ingredients="strawberry cider:1,lime juice:1,ice:1">
+      <strong>Strawberry Fizz</strong>
       <div class="meta">
         strawberry cider, lime juice, ice — Sweet, fresh, fizzy
       </div>
@@ -604,11 +628,11 @@
     </div>
   </div>
 
-  <div id="shakes" class="category hidden space-y-4">
-    <h2 class="text-xl text-primary border-b border-accent mb-4 mt-8 pb-2">🥤 Shakes &amp; Floats</h2>
+  <div id="shakes" class="category">
+    <h2>Shakes &amp; Floats</h2>
 
-    <div class="item" data-ingredients="vanilla ice cream:120g,plant milk:150ml,cocoa powder:7g">
-      <strong class="text-primary font-normal mr-2">🍫 Chocolate Milkshake</strong>
+    <div class="item" data-ingredients="vanilla ice cream:1,plant milk:1,cocoa powder:1">
+      <strong>Chocolate Milkshake</strong>
       <div class="meta">
         Vanilla ice cream, cocoa powder, plant milk — Rich, creamy, chocolatey
       </div>
@@ -620,8 +644,8 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="banana:1,cocoa powder:7g,plant milk:150ml,cocoa powder:7g">
-      <strong class="text-primary font-normal mr-2">🍌 Chocolate Banana Swirl</strong>
+    <div class="item" data-ingredients="banana:1,cocoa powder:1,plant milk:1,cocoa powder:1">
+      <strong>Chocolate Banana Swirl</strong>
       <div class="meta">
         Banana, cocoa powder, plant milk — Rich, smooth, indulgent
       </div>
@@ -632,8 +656,8 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="orange juice:100ml,double cream:30ml,vanilla extract:1ml,ice:100g">
-      <strong class="text-primary font-normal mr-2">🍊 Creamy Citrus Shake</strong>
+    <div class="item" data-ingredients="orange juice:1,double cream:1,vanilla extract:1,ice:1">
+      <strong>Creamy Citrus Shake</strong>
       <div class="meta">
         Orange juice, double cream, vanilla extract, ice — Silky, citrus,
         dreamy
@@ -646,8 +670,8 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="banana:1,cocoa powder:2g,espresso:30ml,ice:100g">
-      <strong class="text-primary font-normal mr-2">🍌 Mocha Banana Blitz</strong>
+    <div class="item" data-ingredients="banana:1,cocoa powder:1,espresso:1,ice:1">
+      <strong>Mocha Banana Blitz</strong>
       <div class="meta">
         Banana, cocoa powder, espresso, ice — Bold, creamy, energising
       </div>
@@ -659,8 +683,8 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="peach iced tea:150ml,vanilla ice cream:60g,ice:100g">
-      <strong class="text-primary font-normal mr-2">🍑 Peach Tea Cream Float</strong>
+    <div class="item" data-ingredients="peach iced tea:1,vanilla ice cream:1,ice:1">
+      <strong>Peach Tea Cream Float</strong>
       <div class="meta">
         Peach iced tea, vanilla ice cream, whipped cream, ice — Creamy,
         fruity, fizzy
@@ -672,8 +696,8 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="pineapple juice:100ml,banana:1,ice:100g">
-      <strong class="text-primary font-normal mr-2">🍍 Tropical Nice Cream</strong>
+    <div class="item" data-ingredients="pineapple juice:1,banana:1,ice:1">
+      <strong>Tropical Nice Cream</strong>
       <div class="meta">
         Pineapple juice, banana, ice — Frozen, fruity, light
       </div>
@@ -684,8 +708,8 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="coke zero:150ml,vanilla ice cream:60g">
-      <strong class="text-primary font-normal mr-2">🥤 Vanilla Cola Float</strong>
+    <div class="item" data-ingredients="coke zero:1,vanilla ice cream:1">
+      <strong>Vanilla Cola Float</strong>
       <div class="meta">
         Coke Zero, vanilla ice cream — Classic, bubbly, rich
       </div>
@@ -696,8 +720,8 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="creamed coconut:30g,ice:100g,elderflower cordial:10ml">
-      <strong class="text-primary font-normal mr-2">🥥 Coconut Ice Swirl</strong>
+    <div class="item" data-ingredients="creamed coconut:1,ice:1,elderflower cordial:1">
+      <strong>Coconut Ice Swirl</strong>
       <div class="meta">
         Creamed coconut, ice, elderflower cordial — Chilled, tropical, lush
       </div>
@@ -708,8 +732,8 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="vanilla ice cream:120g,plant milk:150ml,caramel flavour:15ml,ice:100g">
-      <strong class="text-primary font-normal mr-2">🍮 Caramel Milkshake</strong>
+    <div class="item" data-ingredients="vanilla ice cream:1,plant milk:1,caramel flavour:1,ice:1">
+      <strong>Caramel Milkshake</strong>
       <div class="meta">
         Vanilla ice cream, plant milk, caramel flavour, ice — Creamy, sweet,
         indulgent
@@ -721,8 +745,8 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="vanilla ice cream:120g,plant milk:150ml,peppermint extract:2ml,ice:100g">
-      <strong class="text-primary font-normal mr-2">🌿 Peppermint Shake</strong>
+    <div class="item" data-ingredients="vanilla ice cream:1,plant milk:1,peppermint extract:1,ice:1">
+      <strong>Peppermint Shake</strong>
       <div class="meta">
         Vanilla ice cream, plant milk, peppermint extract, ice — Cool, minty,
         fresh
@@ -735,22 +759,11 @@
     </div>
   </div>
 
-  <div id="smoothies" class="category hidden space-y-4">
-    <h2 class="text-xl text-primary border-b border-accent mb-4 mt-8 pb-2">🥤 Smoothies &amp; Coolers</h2>
+  <div id="smoothies" class="category">
+    <h2>Smoothies &amp; Coolers</h2>
 
-    <div class="item" data-ingredients="pineapple juice:100,orange juice:50,ice:100">
-      <strong class="text-primary font-normal mr-2">🍍 Tropical Cooler</strong>
-      <div class="meta">
-        Pineapple juice, orange juice, ice — Tangy, fresh, smooth
-      </div>
-      <details>
-        <summary>Instructions</summary>
-        Blend 100 ml pineapple juice, 50 ml orange juice and 100 g ice until smooth. Garnish with a pineapple wedge.
-      </details>
-    </div>
-
-    <div class="item" data-ingredients="banana:1,plant milk:100,vanilla ice cream:60,ice:100">
-      <strong class="text-primary font-normal mr-2">🍌 Banana Berry Cream</strong>
+    <div class="item" data-ingredients="banana:1,plant milk:1,vanilla ice cream:1,ice:1">
+      <strong>Banana Cream Smoothie</strong>
       <div class="meta">
         Banana, plant milk, vanilla ice cream, ice — Creamy, mellow, sweet
       </div>
@@ -760,8 +773,8 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="banana:1,plant milk:150,ice:100">
-      <strong class="text-primary font-normal mr-2">🍌 Banana Smoothie</strong>
+    <div class="item" data-ingredients="banana:1,plant milk:1,ice:1">
+      <strong>Banana Smoothie</strong>
       <div class="meta">
         Banana, plant milk, ice — Creamy, simple, smooth
       </div>
@@ -771,8 +784,8 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="mango juice:100,plant milk:100,ice:100">
-      <strong class="text-primary font-normal mr-2">🥭 Mango Smoothie</strong>
+    <div class="item" data-ingredients="mango juice:1,plant milk:1,ice:1">
+      <strong>Mango Smoothie</strong>
       <div class="meta">
         Mango juice, plant milk, ice — Tropical, creamy, fresh
       </div>
@@ -782,19 +795,20 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="pineapple juice:100,plant milk:100,ice:100">
-      <strong class="text-primary font-normal mr-2">🍍 Pineapple Smoothie</strong>
+    <div class="item" data-ingredients="pineapple juice:1,plant milk:1,ice:1">
+      <strong>Pineapple Smoothie</strong>
       <div class="meta">
         Pineapple juice, plant milk, ice — Tangy, creamy, bright
       </div>
       <details>
         <summary>Instructions</summary>
-        Blend 100 ml pineapple juice with 100 ml plant milk and 100 g ice until smooth. Garnish with a pineapple wedge.
+        Blend 100 ml pineapple juice with 100 ml plant milk and 100 g ice until smooth. Garnish with a pineapple
+        wedge.
       </details>
     </div>
 
-    <div class="item" data-ingredients="orange juice:100,plant milk:100,ice:100">
-      <strong class="text-primary font-normal mr-2">🍊 Orange Smoothie</strong>
+    <div class="item" data-ingredients="orange juice:1,plant milk:1,ice:1">
+      <strong>Orange Smoothie</strong>
       <div class="meta">
         Orange juice, plant milk, ice — Citrus, creamy, vibrant
       </div>
@@ -804,8 +818,8 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="banana:1,mango juice:50,plant milk:100,ice:100">
-      <strong class="text-primary font-normal mr-2">🍌🥭 Mixed Fruit Smoothie</strong>
+    <div class="item" data-ingredients="banana:1,mango juice:1,plant milk:1,ice:1">
+      <strong>Mixed Fruit Smoothie</strong>
       <div class="meta">
         Banana, mango juice, plant milk, ice — Fruity, smooth, refreshing
       </div>
@@ -815,8 +829,19 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="ginger dram:20,lime juice:15,coke zero:150,ice:100">
-      <strong class="text-primary font-normal mr-2">🍋 Zesty Cooler</strong>
+    <div class="item" data-ingredients="pineapple juice:1,orange juice:1,ice:1">
+      <strong>Tropical Cooler</strong>
+      <div class="meta">
+        Pineapple juice, orange juice, ice — Tangy, fresh, smooth
+      </div>
+      <details>
+        <summary>Instructions</summary>
+        Blend 100 ml pineapple juice, 50 ml orange juice and 100 g ice until smooth. Garnish with a pineapple wedge.
+      </details>
+    </div>
+
+    <div class="item" data-ingredients="ginger dram:1,lime juice:1,coke zero:1,ice:1">
+      <strong>Zesty Cooler</strong>
       <div class="meta">
         Ginger Dram, lime juice, Coke Zero, ice — Zippy, spicy, crisp
       </div>
@@ -827,8 +852,8 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="mango juice:100,lime juice:15,lemonade:150,ice:100">
-      <strong class="text-primary font-normal mr-2">🥭 Mango Cooler</strong>
+    <div class="item" data-ingredients="mango juice:1,lime juice:1,lemonade:1,ice:1">
+      <strong>Mango Cooler</strong>
       <div class="meta">
         Mango juice, lime juice, lemonade, ice — Cool, juicy, mellow
       </div>
@@ -840,11 +865,11 @@
     </div>
   </div>
 
-  <div id="hot" class="category hidden space-y-4">
-    <h2 class="text-xl text-primary border-b border-accent mb-4 mt-8 pb-2">☕ Hot Drinks</h2>
+  <div id="hot" class="category">
+    <h2>Hot Drinks</h2>
 
     <div class="item" data-ingredients="espresso:1">
-      <strong class="text-primary font-normal mr-2">☕ Espresso</strong>
+      <strong>Espresso</strong>
       <div class="meta">Coffee beans — Bold, short, strong</div>
       <details>
         <summary>Instructions</summary>
@@ -853,7 +878,7 @@
     </div>
 
     <div class="item" data-ingredients="espresso:1">
-      <strong class="text-primary font-normal mr-2">☕ Americano</strong>
+      <strong>Americano</strong>
       <div class="meta">Espresso, hot water — Smooth, bold, simple</div>
       <details>
         <summary>Instructions</summary>
@@ -863,7 +888,7 @@
     </div>
 
     <div class="item">
-      <strong class="text-primary font-normal mr-2">☕ Cappuccino</strong>
+      <strong>Cappuccino</strong>
       <div class="meta">
         Espresso, foamed plant milk — Frothy, rich, warming
       </div>
@@ -875,7 +900,7 @@
     </div>
 
     <div class="item">
-      <strong class="text-primary font-normal mr-2">☕ Latte</strong>
+      <strong>Latte</strong>
       <div class="meta">
         Espresso, steamed plant milk — Mild, milky, warm
       </div>
@@ -887,7 +912,7 @@
     </div>
 
     <div class="item">
-      <strong class="text-primary font-normal mr-2">☕ Macchiato</strong>
+      <strong>Macchiato</strong>
       <div class="meta">Espresso, milk foam — Punchy, light, foamy</div>
       <details>
         <summary>Instructions</summary>
@@ -897,7 +922,7 @@
     </div>
 
     <div class="item">
-      <strong class="text-primary font-normal mr-2">☕ Cortado</strong>
+      <strong>Cortado</strong>
       <div class="meta">
         Espresso, steamed plant milk — Balanced, smooth, bold
       </div>
@@ -909,7 +934,7 @@
     </div>
 
     <div class="item">
-      <strong class="text-primary font-normal mr-2">🍫 Mocha</strong>
+      <strong>Mocha</strong>
       <div class="meta">
         Espresso, cocoa powder, plant milk — Chocolaty, creamy, bold
       </div>
@@ -921,7 +946,7 @@
     </div>
 
     <div class="item">
-      <strong class="text-primary font-normal mr-2">🍫 Mocha Cortado</strong>
+      <strong>Mocha Cortado</strong>
       <div class="meta">
         Espresso, cocoa powder, steamed plant milk — Chocolatey, bold,
         comforting
@@ -934,7 +959,7 @@
     </div>
 
     <div class="item">
-      <strong class="text-primary font-normal mr-2">🍫 Peppermint Mocha</strong>
+      <strong>Peppermint Mocha</strong>
       <div class="meta">
         Espresso, cocoa powder, plant milk, peppermint extract — Minty,
         chocolatey, warming
@@ -947,7 +972,7 @@
       </details>
     </div>
     <div class="item">
-      <strong class="text-primary font-normal mr-2">🍮 Caramel Latte</strong>
+      <strong>Caramel Latte</strong>
       <div class="meta">
         Espresso, plant milk, caramel flavour — Sweet, smooth, rich
       </div>
@@ -959,10 +984,10 @@
     </div>
   </div>
 
-  <div id="frappes" class="category hidden space-y-4">
-    <h2 class="text-xl text-primary border-b border-accent mb-4 mt-8 pb-2">🧊 Frappes &amp; Iced</h2>
+  <div id="frappes" class="category">
+    <h2>Frappes &amp; Iced</h2>
     <div class="item">
-      <strong class="text-primary font-normal mr-2">☕ Coffee Frappe</strong>
+      <strong>Coffee Frappe</strong>
       <div class="meta">Espresso, ice, plant milk — Frosty, bold, smooth</div>
       <details>
         <summary>Instructions</summary>
@@ -971,7 +996,7 @@
       </details>
     </div>
     <div class="item">
-      <strong class="text-primary font-normal mr-2">🍫 Mocha Frappe</strong>
+      <strong>Mocha Frappe</strong>
       <div class="meta">
         Espresso, cocoa powder, ice, plant milk — Chilled, chocolaty,
         invigorating
@@ -983,7 +1008,7 @@
       </details>
     </div>
     <div class="item">
-      <strong class="text-primary font-normal mr-2">🥥 Coconut Frappe</strong>
+      <strong>Coconut Frappe</strong>
       <div class="meta">
         Creamed coconut, ice, plant milk — Tropical, creamy, lush
       </div>
@@ -994,7 +1019,7 @@
       </details>
     </div>
     <div class="item">
-      <strong class="text-primary font-normal mr-2">🍌 Banana Frappe</strong>
+      <strong>Banana Frappe</strong>
       <div class="meta">
         Banana, plant milk, ice — Smooth, fruity, refreshing
       </div>
@@ -1005,7 +1030,7 @@
       </details>
     </div>
     <div class="item">
-      <strong class="text-primary font-normal mr-2">🍫 Millionaires Frappe</strong>
+      <strong>Millionaires Frappe</strong>
       <div class="meta">
         Cocoa powder, caramel flavour, plant milk — Indulgent, creamy,
         decadent
@@ -1019,7 +1044,7 @@
     </div>
 
     <div class="item">
-      <strong class="text-primary font-normal mr-2">🍮 Caramel Frappe</strong>
+      <strong>Caramel Frappe</strong>
       <div class="meta">
         Caramel flavour, plant milk, ice — Sweet, icy, rich
       </div>
@@ -1029,7 +1054,7 @@
       </details>
     </div>
     <div class="item">
-      <strong class="text-primary font-normal mr-2">🍮 Caramel Espresso Frappe</strong>
+      <strong>Caramel Espresso Frappe</strong>
       <div class="meta">
         Caramel flavour, espresso, whipped cream — Rich, caffeinated, sweet
       </div>
@@ -1041,7 +1066,7 @@
       </details>
     </div>
     <div class="item">
-      <strong class="text-primary font-normal mr-2">☕ Frappe Latte</strong>
+      <strong>Frappe Latte</strong>
       <div class="meta">
         Espresso, plant milk, ice — Smooth, chilled, milky
       </div>
@@ -1052,7 +1077,7 @@
       </details>
     </div>
     <div class="item">
-      <strong class="text-primary font-normal mr-2">☕ Mocha Latte</strong>
+      <strong>Mocha Latte</strong>
       <div class="meta">
         Espresso, cocoa powder, plant milk — Chocolatey, warm, comforting
       </div>
@@ -1063,7 +1088,7 @@
       </details>
     </div>
     <div class="item">
-      <strong class="text-primary font-normal mr-2">🍦 Vanilla Iced Latte</strong>
+      <strong>Vanilla Iced Latte</strong>
       <div class="meta">
         Espresso, plant milk, vanilla extract, ice — Cool, vanilla, smooth
       </div>
@@ -1074,7 +1099,7 @@
       </details>
     </div>
     <div class="item">
-      <strong class="text-primary font-normal mr-2">🍮 Caramel Iced Latte</strong>
+      <strong>Caramel Iced Latte</strong>
       <div class="meta">
         Espresso, plant milk, caramel flavour, ice — Sweet, creamy, refreshing
       </div>
@@ -1086,136 +1111,171 @@
     </div>
   </div>
 
-  <div id="lollies" class="category hidden space-y-4">
-    <h2 class="text-xl text-primary border-b border-accent mb-4 mt-8 pb-2">🍧 Ice Creams & Lollies</h2>
+  <div id="lollies" class="category">
+    <h2>Ice Creams & Lollies</h2>
     <div class="item" data-ingredients="currant pop:1">
-      <strong class="text-primary font-normal mr-2">🍎 Apple &amp; Blackcurrant Ice Pop</strong>
+      <strong>Apple &amp; Blackcurrant Ice Pop</strong>
+      <div class="meta">Fruity, refreshing, icy</div>
     </div>
     <div class="item" data-ingredients="orange pop:1">
-      <strong class="text-primary font-normal mr-2">🍊 Orange Ice Pop</strong>
+      <strong>Orange Ice Pop</strong>
+      <div class="meta">Citrusy, zesty, icy</div>
     </div>
     <div class="item" data-ingredients="summer pop:1">
-      <strong class="text-primary font-normal mr-2">🍓 Summer Fruits Ice Pop</strong>
+      <strong>Summer Fruits Ice Pop</strong>
+      <div class="meta">Fruity, refreshing, icy</div>
     </div>
     <div class="item" data-ingredients="apple pop:1">
-      <strong class="text-primary font-normal mr-2">🍏 Apple Ice Pop</strong>
+      <strong>Apple Ice Pop</strong>
+      <div class="meta">Crisp, sweet, icy</div>
     </div>
     <div class="item" data-ingredients="magnum:1">
-      <strong class="text-primary font-normal mr-2">🍨 Classic Magnum</strong>
+      <strong>Classic Magnum</strong>
+      <div class="meta">Rich, creamy, indulgent</div>
     </div>
   </div>
 
-  <div id="snacks" class="category hidden space-y-4">
-    <h2 class="text-xl text-primary border-b border-accent mb-4 mt-8 pb-2">🥜 Snacks</h2>
-    <div class="item" data-ingredients="paprika crisps:50">
-      <strong class="text-primary font-normal mr-2">🥔 Crinkle Cut Paprika Crisps</strong>
+  <div id="snacks" class="category">
+    <h2>Snacks</h2>
+    <div class="item" data-ingredients="paprika crisps:1">
+      <strong>Crinkle Cut Paprika Crisps</strong>
+      <div class="meta">Crispy, smoky, paprika-flavoured</div>
     </div>
-    <div class="item" data-ingredients="salted crisps:50">
-      <strong class="text-primary font-normal mr-2">🧂 Crinkle Cut Salted Crisps</strong>
+    <div class="item" data-ingredients="salted crisps:1">
+      <strong>Crinkle Cut Salted Crisps</strong>
+      <div class="meta">Crispy, salty, classic</div>
     </div>
-    <div class="item" data-ingredients="pepper crisps:50">
-      <strong class="text-primary font-normal mr-2">🧂 Salt &amp; Pepper Crisps</strong>
+    <div class="item" data-ingredients="pepper crisps:1">
+      <strong>Salt &amp; Pepper Crisps</strong>
+      <div class="meta">Crispy, peppery, classic</div>
     </div>
-    <div class="item" data-ingredients="triskis:50">
-      <strong class="text-primary font-normal mr-2">🌽 Triskis - Maize Corn Hoop Crisps</strong>
+    <div class="item" data-ingredients="triskis:1">
+      <strong>Triskis - Maize Corn Hoop Crisps</strong>
+      <div class="meta">Crispy, light, corn-flavoured</div>
     </div>
-    <div class="item" data-ingredients="corn:50">
-      <strong class="text-primary font-normal mr-2">🌽 Fried Corn</strong>
+    <div class="item" data-ingredients="corn:1">
+      <strong>Fried Corn</strong>
+      <div class="meta">Crispy, golden, addictive</div>
     </div>
-    <div class="item" data-ingredients="popcorn:150">
-      <strong class="text-primary font-normal mr-2">🍿 Popcorn</strong>
+    <div class="item" data-ingredients="popcorn:1">
+      <strong>Popcorn</strong>
       <div class="meta">Flavours: Salted, Sweet & Salted, Sweet, Caramel, Dark Chocolate, Marshmallow, Cheese, Chilli,
         Cinnamon Sugar, Oregano Basil</div>
     </div>
-    <div class="item" data-ingredients="peanuts:50">
-      <strong class="text-primary font-normal mr-2">🥜 Roasted Salted Peanuts</strong>
+    <div class="item" data-ingredients="peanuts:1">
+      <strong>Roasted Salted Peanuts</strong>
+      <div class="meta">Nutty, crunchy, salty</div>
     </div>
-    <div class="item" data-ingredients="breadsticks:20">
-      <strong class="text-primary font-normal mr-2">🥖 Breadsticks</strong>
+    <div class="item" data-ingredients="breadsticks:1">
+      <strong>Breadsticks</strong>
+      <div class="meta">Crispy, baked, classic</div>
     </div>
-    <div class="item" data-ingredients="edamame:20">
-      <strong class="text-primary font-normal mr-2">🫛 Salted Edamame</strong>
+    <div class="item" data-ingredients="edamame:1">
+      <strong>Salted Edamame</strong>
+      <div class="meta">Savoury, tender, healthy</div>
     </div>
   </div>
 
-  <div id="breakfast" class="category hidden space-y-4">
-    <h2 class="text-xl text-primary border-b border-accent mb-4 mt-8 pb-2">🥞 Breakfast</h2>
+  <div id="breakfast" class="category">
+    <h2>Breakfast</h2>
     <div class="item" data-ingredients="pancakes:1">
-      <strong class="text-primary font-normal mr-2">🥞 Protein Pancakes</strong>
+      <strong>Protein Pancakes</strong>
+      <div class="meta">Fluffy, protein-packed, sweet</div>
     </div>
     <div class="item" data-ingredients="croissant:1">
-      <strong class="text-primary font-normal mr-2">🥐 Croissant</strong>
+      <strong>Croissant</strong>
+      <div class="meta">Buttery, flaky, classic</div>
     </div>
     <div class="item" data-ingredients="pain au chocolat:1">
-      <strong class="text-primary font-normal mr-2">🍫 Pain au Chocolat</strong>
+      <strong>Pain au Chocolat</strong>
+      <div class="meta">Rich, buttery, chocolate-filled</div>
     </div>
     <div class="item" data-ingredients="cinnamon swirl:1">
-      <strong class="text-primary font-normal mr-2">🥮 Cinnamon Swirl</strong>
+      <strong>Cinnamon Swirl</strong>
+      <div class="meta">Sweet, spiced, flaky</div>
     </div>
   </div>
 
 
-  <div id="mains" class="category hidden space-y-4">
-    <h2 class="text-xl text-primary border-b border-accent mb-4 mt-8 pb-2">🍽️ Mains</h2>
+  <div id="mains" class="category">
+    <h2>Mains</h2>
     <div class="item" data-ingredients="rigatoni carbonara:1">
-      <strong class="text-primary font-normal mr-2">🍝 Rigatoni Carbonara</strong>
+      <strong>Rigatoni Carbonara</strong>
+      <div class="meta">Creamy, cheesy, comforting</div>
     </div>
     <div class="item" data-ingredients="spring green orzo:1" data-recipient="Ewa">
-      <strong class="text-primary font-normal mr-2">🌱 Spring Green Orzo</strong>
+      <strong>Spring Green Orzo</strong>
+      <div class="meta">Fresh, vibrant, herby</div>
     </div>
     <div class="item" data-ingredients="golden roast potatoes:1" data-recipient="Maria">
-      <strong class="text-primary font-normal mr-2">🥔 Golden Roast Potatoes</strong>
+      <strong>Golden Roast Potatoes</strong>
+      <div class="meta">Crispy, fluffy, comforting</div>
     </div>
     <div class="item" data-ingredients="buddha bowl:1" data-recipient="Ewa">
-      <strong class="text-primary font-normal mr-2">🥗 Buddha Bowl</strong>
+      <strong>Buddha Bowl</strong>
+      <div class="meta">Wholesome, vibrant, nourishing</div>
     </div>
     <div class="item" data-ingredients="roast dinner:1">
-      <strong class="text-primary font-normal mr-2">🍽️ Roast Dinner</strong>
+      <strong>Roast Dinner</strong>
+      <div class="meta">Classic, hearty, comforting</div>
     </div>
     <div class="item" data-ingredients="rainbow tofu bowl:1" data-recipient="Ewa">
-      <strong class="text-primary font-normal mr-2">🌈 Rainbow Tofu Bowl</strong>
+      <strong>Rainbow Tofu Bowl</strong>
+      <div class="meta">Vibrant, fresh, nourishing</div>
     </div>
 
     <div class="item" data-ingredients="mushroom stroganoff:1" data-recipient="Ewa">
-      <strong class="text-primary font-normal mr-2">🍄 Mushroom Stroganoff</strong>
+      <strong>Mushroom Stroganoff</strong>
+      <div class="meta">Creamy, earthy, comforting</div>
     </div>
     <div class="item" data-ingredients="sweetcorn & smoky bacon bake:1" data-recipient="Maria">
-      <strong class="text-primary font-normal mr-2">🌽 Sweetcorn &amp; Smoky ‘Bacon’ Bake</strong>
+      <strong>Sweetcorn &amp; Smoky ‘Bacon’ Bake</strong>
+      <div class="meta">Creamy, smoky, comforting</div>
     </div>
     <div class="item" data-ingredients="cauli korma:1" data-recipient="Maria">
-      <strong class="text-primary font-normal mr-2">🥦 Cauli Korma</strong>
+      <strong>Cauli Korma</strong>
+      <div class="meta">Creamy, spiced, comforting</div>
     </div>
     <div class="item" data-ingredients="not-a-chicken tikka masala:1" data-recipient="Maria">
-      <strong class="text-primary font-normal mr-2">🍗 Not-a-Chicken Tikka Masala</strong>
+      <strong>Not-a-Chicken Tikka Masala</strong>
+      <div class="meta">Creamy, spiced, comforting</div>
     </div>
 
     <div class="item" data-ingredients="jerk tofu bowl:1" data-recipient="Ewa">
-      <strong class="text-primary font-normal mr-2">🍛 Jerk Tofu Bowl</strong>
+      <strong>Jerk Tofu Bowl</strong>
+      <div class="meta">Spicy, vibrant, nourishing</div>
     </div>
     <div class="item" data-ingredients="lebanese style bowl:1" data-recipient="Maria">
-      <strong class="text-primary font-normal mr-2">🥙 Lebanese Style Bowl</strong>
+      <strong>Lebanese Style Bowl</strong>
+      <div class="meta">Fresh, herby, vibrant</div>
     </div>
     <div class="item" data-ingredients="polpette alfredo:1" data-recipient="Maria">
-      <strong class="text-primary font-normal mr-2">🍝 Polpette Alfredo</strong>
+      <strong>Polpette Alfredo</strong>
+      <div class="meta">Creamy, cheesy, comforting</div>
     </div>
     <div class="item" data-ingredients="yaki-miso udon noodles:1" data-recipient="Ewa">
-      <strong class="text-primary font-normal mr-2">🍜 Yaki-Miso Udon Noodles</strong>
+      <strong>Yaki-Miso Udon Noodles</strong>
+      <div class="meta">Savory, umami, comforting</div>
     </div>
   </div>
 
-  <div id="desserts" class="category hidden space-y-4">
-    <h2 class="text-xl text-primary border-b border-accent mb-4 mt-8 pb-2">🍰 Desserts</h2>
+  <div id="desserts" class="category">
+    <h2>Desserts</h2>
     <div class="item" data-ingredients="beetroot red velvet cake:1" data-recipient="Ewa">
-      <strong class="text-primary font-normal mr-2">🍰 Beetroot Red Velvet Cake</strong>
+      <strong>Beetroot Red Velvet Cake</strong>
+      <div class="meta">Rich, moist, indulgent</div>
     </div>
     <div class="item" data-ingredients="chocolate & hazelnut fondant:1">
-      <strong class="text-primary font-normal mr-2">🍫 Chocolate &amp; Hazelnut Fondant</strong>
+      <strong>Chocolate &amp; Hazelnut Fondant</strong>
+      <div class="meta">Rich, gooey, decadent</div>
     </div>
     <div class="item" data-ingredients="cheesecake:1">
-      <strong class="text-primary font-normal mr-2">🍪 Vanilla Cookies &amp; Cream Cheesecake</strong>
+      <strong>Vanilla Cookies &amp; Cream Cheesecake</strong>
+      <div class="meta">Creamy, sweet, indulgent</div>
     </div>
     <div class="item" data-ingredients="zillionaire:1">
-      <strong class="text-primary font-normal mr-2">🍰 Zillionaire's Cheesecake</strong>
+      <strong>Zillionaire's Cheesecake</strong>
+      <div class="meta">Rich, decadent, indulgent</div>
     </div>
   </div>
 
