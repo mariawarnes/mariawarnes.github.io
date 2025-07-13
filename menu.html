@@ -20,7 +20,7 @@
           },
           fontFamily: {
             serif: ['\'Playfair Display\'', 'serif'],
-            sans: ['Roboto', 'sans-serif']
+            sans: ['Avenir', 'Roboto', 'sans-serif']
           }
         }
       }
@@ -58,6 +58,76 @@
 
     .item.unavailable {
       opacity: 0.5;
+    }
+
+    /* Luxury service section styles */
+    body {
+      background-color: white;
+    }
+
+    .service-title {
+      box-sizing: border-box;
+      color: rgb(61, 61, 61);
+      display: block;
+      font-family: Avenir-Roman, sans-serif;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 800;
+      height: 26px;
+      line-height: 26px;
+      margin-bottom: 8px;
+      margin-top: 16px;
+      text-align: left;
+      width: 913px;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    .tags-section {
+      align-items: center;
+      border-bottom: 0.5px solid rgb(186, 185, 181);
+      border-top: 0.5px solid rgb(186, 185, 181);
+      box-sizing: border-box;
+      color: rgb(25, 33, 43);
+      display: flex;
+      flex-wrap: wrap;
+      font-family: Avenir-Roman, sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      height: 57px;
+      line-height: 20px;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      padding-top: 16px;
+      text-align: left;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    .tag-item {
+      color: rgb(61, 61, 61);
+      display: block;
+      font-family: Avenir-Roman, sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      height: 24px;
+      line-height: 16px;
+      margin-right: 16px;
+      padding-bottom: 4px;
+      padding-top: 4px;
+      text-align: left;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    .service-description {
+      color: rgb(61, 61, 61);
+      font-family: Avenir-Roman, sans-serif;
+      font-size: 16px;
+      font-weight: 100;
+      line-height: 18px;
+      max-width: 90%;
+      text-align: left;
+      width: 821.695px;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
   </style>
   <script>
@@ -134,8 +204,22 @@
   </script>
 </head>
 
-<body class="bg-gray-100 font-sans text-gray-800 max-w-4xl mx-auto p-6">
+<body class="font-sans text-gray-800 max-w-4xl mx-auto p-6">
   <h1 class="text-4xl font-serif text-center text-primary mb-8">Bar Marwar Menu</h1>
+
+  <section class="my-6">
+    <div>
+      <div class="service-title">Ío Pool Bar</div>
+      <div class="tags-section">
+        <div class="tag-item">Cocktails</div>
+        <div class="tag-item">Cold beer</div>
+        <div class="tag-item">Snacks</div>
+      </div>
+      <div class="service-description">
+        <p>Cocktail bar next to the ÍO Pool serving all your favourite drinks as well as bites such as gourmet hot dogs and burgers during the day.</p>
+      </div>
+    </div>
+  </section>
 
   <div class="stock-panel">
     <!-- ml -->
