@@ -173,7 +173,7 @@
         .forEach((li) =>
           li.addEventListener("click", () => showCategory(li.dataset.target))
         );
-      showCategory("classic");
+      showCategory("softs");
 
       const stockInputs = document.querySelectorAll(".stock-panel input");
       const stock = {};
@@ -191,11 +191,12 @@
           const ingredients = item.dataset.ingredients?.split(",") || [];
           let available = true;
 
-          ingredients.forEach(pair => {
-            const [rawName, rawAmt] = pair.split(":");
-            const name = rawName.trim();
-            const requiredAmt = rawAmt !== undefined ? Number(rawAmt) : 1;
-            if (!stock[name] || stock[name] < requiredAmt) available = false;
+          ingredients.forEach(group => {
+            // Support "or" logic: group can be "a|b"
+            const options = group.split("|").map(opt => opt.trim());
+            // Ingredient is available if ANY option is in stock
+            const groupAvailable = options.some(name => stock[name] && stock[name] > 0);
+            if (!groupAvailable) available = false;
           });
 
           const badge = item.querySelector(".badge");
@@ -326,8 +327,8 @@
   <nav>
     <h2>Drinks</h2>
     <ul>
-      <li data-target="soft">Softs,
-        Bottles &amp; Canned</li>
+      <li data-target="softs">Softs,
+        Bottles &amp; Cans</li>
       <li data-target="classic">Classic
         Mocktails</li>
       <li data-target="mocktails">Mocktails</li>
@@ -350,40 +351,40 @@
     </ul>
   </nav>
 
-  <div id="soft" class="category">
-    <h2>Softs, Bottled &amp; Canned
+  <div id="softs" class="category">
+    <h2>Softs, Bottles &amp; Cans
     </h2>
-    <div class="item" data-ingredients="crodino:1">
+    <div class="item" data-ingredients="crodino">
       <strong>Crodino</strong>
       <div class="meta">
         Bitter, refreshing, Italian
       </div>
     </div>
-    <div class="item" data-ingredients="aperitivo:1">
+    <div class="item" data-ingredients="aperitivo">
       <strong>Aperitivo</strong>
       <div class="meta">
         Herbal, aromatic, Italian
       </div>
     </div>
-    <div class="item" data-ingredients="strawberry cider:1">
+    <div class="item" data-ingredients="strawberry cider">
       <strong>Strawberry &amp; Lime Cider</strong>
       <div class="meta">
         Fruity, refreshing, British
       </div>
     </div>
-    <div class="item" data-ingredients="impossibrew:1">
+    <div class="item" data-ingredients="impossibrew">
       <strong>Impossibrew Lager</strong>
       <div class="meta">
         Crisp, light, alcohol-free
       </div>
     </div>
-    <div class="item" data-ingredients="tymbark:1">
+    <div class="item" data-ingredients="tymbark">
       <strong>Mango &amp; Apple Tymbark</strong>
       <div class="meta">
         Fruity, refreshing, Polish
       </div>
     </div>
-    <div class="item" data-ingredients="coke zero:1">
+    <div class="item" data-ingredients="coke zero">
       <strong>Coke Zero</strong>
       <div class="meta">
         Classic, refreshing, cola
@@ -393,7 +394,7 @@
 
   <div id="classic" class="category">
     <h2>Classic Mocktails</h2>
-    <div class="item" data-ingredients="peach syrup:1,lemon juice:1,orange juice:1,pineapple juice:1,lemonade:1">
+    <div class="item" data-ingredients="peach syrup,lemon juice,orange juice,pineapple juice,lemonade">
       <strong>Hugs on the Beach</strong>
       <div class="meta">
         Lemonade, peach syrup, lemon juice, orange juice, pineapple juice —
@@ -408,8 +409,8 @@
         twist.
       </details>
     </div>
-    <div class="item" data-ingredients="lime juice:1,elderflower cordial:1,orange juice:1">
-      <strong>White Kindapolitan</strong>
+    <div class="item" data-ingredients="lime juice,elderflower cordial,orange juice">
+      <strong>Kindapolitan (White)</strong>
       <div class="meta">
         Lime juice, elderflower cordial, orange juice — Zesty, floral, bright
       </div>
@@ -419,19 +420,31 @@
         Strain and garnish.
       </details>
     </div>
-    <div class="drink" data-ingredients="creamed coconut:1,pineapple juice:1,orange juice:1">
+    <div class="item" data-ingredients="creamed coconut,pineapple juice,orange juice">
       <strong>Bahama Calma</strong>
-        <div class="meta">
-    Orange juice, pineapple juice, creamed coconut — Tropical, creamy, zesty
-  </div>
-  <details><summary>Instructions</summary>
-    Soften 30 g creamed coconut by stirring it with 20 ml warm water until smooth.  
-    Combine with 120 ml orange juice and 60 ml pineapple juice in a lidded jar or container with ice.  
-    Seal and shake vigorously for 10 s, then strain into a chilled glass over fresh ice.  
-    Garnish with a pineapple wedge.
-  </details>
-</div>
-    <div class="item" data-ingredients="creamed coconut:1,pineapple juice:1,vanilla extract:1">
+      <div class="meta">
+        Orange juice, pineapple juice, creamed coconut — Tropical, creamy, zesty
+      </div>
+      <details>
+        <summary>Instructions</summary>
+        Soften 30 g creamed coconut by stirring it with 20 ml warm water until smooth.
+        Combine with 120 ml orange juice and 60 ml pineapple juice in a lidded jar or container with ice.
+        Seal and shake vigorously for 10 s, then strain into a chilled glass over fresh ice.
+        Garnish with a pineapple wedge.
+      </details>
+    </div>
+    <div class="item" data-ingredients="crodino,tonic water">
+      <strong>Mockerol Spritz</strong>
+      <div class="meta">
+        Crodino/Aperitivo, tonic water — Bitter, refreshing, Italian
+      </div>
+      <details>
+        <summary>Instructions</summary>
+        Pour 100 ml Crodino/Aperitivo over ice in a wine glass, top with 100 ml tonic water, and garnish with an orange
+        slice.
+      </details>
+    </div>
+    <div class="item" data-ingredients="creamed coconut,pineapple juice,vanilla extract">
       <strong>Piña No-lada</strong>
       <div class="meta">
         Creamed coconut, pineapple juice, vanilla — Creamy, tropical, sweet
@@ -442,7 +455,7 @@
         vanilla extract until smooth.
       </details>
     </div>
-    <div class="item" data-ingredients="dried mint:1,lime juice:1,elderflower cordial:1,tonic water:1">
+    <div class="item" data-ingredients="dried mint,lime juice,elderflower cordial,tonic water">
       <strong>Nojito</strong>
       <div class="meta">
         Lime juice, dried mint, tonic water, elderflower cordial — Minty,
@@ -454,7 +467,7 @@
         juice and 15ml cordial, top with 150ml tonic water over ice.
       </details>
     </div>
-    <div class="item" data-ingredients="orange juice:1,mango juice:1,sangria syrup:1">
+    <div class="item" data-ingredients="orange juice,mango juice,sangria syrup">
       <strong>Tequiless Sunrise</strong>
       <div class="meta">
         Orange juice, mango juice, sangria syrup — Bright, layered, citrusy
@@ -465,7 +478,7 @@
         syrup, garnish.
       </details>
     </div>
-    <div class="item" data-ingredients="impossibrew:1,lemonade:1,lime juice:1">
+    <div class="item" data-ingredients="impossibrew,lemonade,lime juice">
       <strong>Shan’ty</strong>
       <div class="meta">
         Impossibrew, lemonade, lime juice — Zingy, light, fizzy
@@ -475,7 +488,7 @@
         Mix 100ml Impossibrew, 100ml lemonade and 10ml lime juice over ice.
       </details>
     </div>
-    <div class="item" data-ingredients="peach syrup:1,alcohol-free merlot:1">
+    <div class="item" data-ingredients="peach syrup,alcohol-free merlot">
       <strong>Belli-no</strong>
       <div class="meta">
         peach syrup, alcohol-free merlot — Fruity, bright, bubbly
@@ -485,7 +498,7 @@
         Pour 15ml syrup and top with 100ml merlot in a flute.
       </details>
     </div>
-    <div class="item" data-ingredients="lime juice:1,sugar:1,tonic water:1">
+    <div class="item" data-ingredients="lime juice,sugar,tonic water">
       <strong>Caipiri-nah</strong>
       <div class="meta">
         Lime juice, sugar, tonic water — Zesty, simple, Brazilian
@@ -495,15 +508,17 @@
         Muddle sugar with 30ml lime juice, add 150ml tonic water over ice.
       </details>
     </div>
-    <div class="item" data-ingredients="sugar:1,espresso:1,vanilla extract:1,cocoa powder:1">
+    <div class="item" data-ingredients="sugar,espresso,vanilla extract,cocoa powder">
       <strong>Espresso Marti-no</strong>
-       <div class="meta">Espresso, sugar & water, vanilla extract, plant milk — Strong, sweet, creamy</div>
-       <details>
-         <summary>Instructions</summary>
-         Combine 60 ml cooled espresso, 30 g granulated sugar, 30 ml water, ¼ tsp vanilla extract and 30 ml barista-style plant milk in a container with ice. Stir vigorously for 10 s, until the sugar has dissolved, then strain into a chilled martini glass and garnish with coffee beans.
-       </details>
+      <div class="meta">Espresso, sugar & water, vanilla extract, plant milk — Strong, sweet, creamy</div>
+      <details>
+        <summary>Instructions</summary>
+        Combine 60 ml cooled espresso, 30 g granulated sugar, 30 ml water, ¼ tsp vanilla extract and 30 ml barista-style
+        plant milk in a container with ice. Stir vigorously for 10 s, until the sugar has dissolved, then strain into a
+        chilled martini glass and garnish with coffee beans.
+      </details>
     </div>
-    <div class="item" data-ingredients="tonic water:1,lime juice:1,elderflower cordial:1">
+    <div class="item" data-ingredients="tonic water,lime juice,elderflower cordial">
       <strong>Free &amp; T</strong>
       <div class="meta">
         Tonic water, lime juice, elderflower cordial — Botanical, crisp, clean
@@ -513,7 +528,7 @@
         Combine 150ml tonic water, 10ml lime juice, 10ml cordial over ice.
       </details>
     </div>
-    <div class="item" data-ingredients="lime juice:1,lemon juice:1,orange juice:1,maple syrup:1,tonic water:1">
+    <div class="item" data-ingredients="lime juice,lemon juice,orange juice,maple syrup,tonic water">
       <strong>Margaritish</strong>
       <div class="meta">
         Lime juice, lemon juice, orange juice, maple syrup, tonic water —
@@ -524,7 +539,7 @@
         Shake juices and syrup, strain over ice, top with 150ml tonic water.
       </details>
     </div>
-    <div class="item" data-ingredients="sangria syrup:1,alcohol-free merlot:1,orange juice:1">
+    <div class="item" data-ingredients="sangria syrup,alcohol-free merlot,orange juice">
       <strong>Sans-gria</strong>
       <div class="meta">
         Sangria syrup, alcohol-free merlot, orange juice — Bright, floral,
@@ -535,7 +550,7 @@
         Stir 30ml sangria syrup, 100ml merlot, 100ml orange juice over ice.
       </details>
     </div>
-    <div class="item" data-ingredients="mango juice:1,lime juice:1,peach syrup:1,vanilla extract:1">
+    <div class="item" data-ingredients="mango juice,lime juice,peach syrup,vanilla extract">
       <strong>Popstar Marti-no</strong>
       <div class="meta">
         Mango juice, lime juice, peach syrup, vanilla — Tropical, cheeky, fun
@@ -545,11 +560,23 @@
         Shake juices, syrup and extract with ice.
       </details>
     </div>
+    <div class="item" data-ingredients="orange juice,tonic water">
+      <strong>Mi-nosa</strong>
+      <div class="meta">
+        Orange juice, tonic water — Crisp, bitter, refreshing
+      </div>
+      <details>
+        <summary>Instructions</summary>
+        Chill a flute or wine glass.
+        Pour 60 ml orange juice, then top with 60 ml chilled tonic water.
+        Stir very gently to preserve the bubbles and garnish with an orange twist.
+      </details>
+    </div>
   </div>
 
   <div id="mocktails" class="category">
     <h2>Mocktails</h2>
-    <div class="item" data-ingredients="energy drink:1,lime juice:1,ice:1">
+    <div class="item" data-ingredients="energy drink,lime juice,ice">
       <strong>Cherry Kick</strong>
       <div class="meta">
         Cherry cola energy drink, lime juice, ice — Punchy, fizzy, tart
@@ -560,7 +587,7 @@
         juice, stir gently, and garnish with a cherry.
       </details>
     </div>
-    <div class="item" data-ingredients="lime juice:1,tonic water:1,ice:1">
+    <div class="item" data-ingredients="lime juice,tonic water,ice">
       <strong>Lime Lift</strong>
       <div class="meta">
         Lime juice, tonic water, ice — Sharp, bright, fizzy
@@ -571,7 +598,7 @@
         water, stir, and garnish with a lime wedge.
       </details>
     </div>
-    <div class="item" data-ingredients="peach syrup:1,lemonade:1">
+    <div class="item" data-ingredients="peach syrup,lemonade">
       <strong>Peach Fizz</strong>
       <div class="meta">
         Peach syrup, lemonade — Fruity, light, sunny
@@ -581,7 +608,7 @@
         Stir 15ml peach syrup and 100ml lemonade over ice.
       </details>
     </div>
-    <div class="item" data-ingredients="lemonade:1,orange juice:1,lime juice:1,ice:1">
+    <div class="item" data-ingredients="lemonade,orange juice,lime juice,ice">
       <strong>Sunset Soda</strong>
       <div class="meta">
         Lemonade, orange juice, lime juice, ice — Sparkly, sweet,
@@ -593,7 +620,7 @@
         100g ice. Stir and garnish with citrus slices.
       </details>
     </div>
-    <div class="item" data-ingredients="creamed coconut:1,lime juice:1,lemonade:1,ice:1">
+    <div class="item" data-ingredients="creamed coconut,lime juice,lemonade,ice">
       <strong>Coconut Crush</strong>
       <div class="meta">
         Creamed coconut, lime juice, lemonade, ice — Tropical, creamy, fizzy
@@ -604,7 +631,7 @@
         smooth. Pour into a glass and top with 150ml lemonade.
       </details>
     </div>
-    <div class="item" data-ingredients="banana:1,lime juice:1,ice:1">
+    <div class="item" data-ingredients="banana,lime juice,ice">
       <strong>Banana Breeze</strong>
       <div class="meta">Banana, lime juice, ice — Smooth, citrusy, light</div>
       <details>
@@ -613,7 +640,7 @@
         immediately.
       </details>
     </div>
-    <div class="item" data-ingredients="orange juice:1,peach syrup:1,lemonade:1,ice:1">
+    <div class="item" data-ingredients="orange juice,peach syrup,lemonade,ice">
       <strong>Orange Blush</strong>
       <div class="meta">
         Orange juice, peach syrup, lemonade, ice — Bright, fruity, soft
@@ -624,7 +651,7 @@
         150ml lemonade, and garnish with an orange slice.
       </details>
     </div>
-    <div class="item" data-ingredients="strawberry cider:1,lime juice:1,ice:1">
+    <div class="item" data-ingredients="strawberry cider,lime juice,ice">
       <strong>Strawberry Fizz</strong>
       <div class="meta">
         strawberry cider, lime juice, ice — Sweet, fresh, fizzy
@@ -640,7 +667,7 @@
   <div id="shakes" class="category">
     <h2>Shakes &amp; Floats</h2>
 
-    <div class="item" data-ingredients="vanilla ice cream:1,plant milk:1,cocoa powder:1">
+    <div class="item" data-ingredients="vanilla ice cream,plant milk,cocoa powder">
       <strong>Chocolate Milkshake</strong>
       <div class="meta">
         Vanilla ice cream, cocoa powder, plant milk — Rich, creamy, chocolatey
@@ -653,7 +680,7 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="banana:1,cocoa powder:1,plant milk:1,cocoa powder:1">
+    <div class="item" data-ingredients="banana,cocoa powder,plant milk,cocoa powder">
       <strong>Chocolate Banana Swirl</strong>
       <div class="meta">
         Banana, cocoa powder, plant milk — Rich, smooth, indulgent
@@ -665,7 +692,46 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="orange juice:1,double cream:1,vanilla extract:1,ice:1">
+    <div class="item" data-ingredients="vanilla ice cream,plant milk,peanut butter">
+      <strong>Peanut Butter Milkshake</strong>
+      <div class="meta">
+        Vanilla ice cream, plant milk, peanut butter — Creamy, nutty,
+        indulgent
+      </div>
+      <details>
+        <summary>Instructions</summary>
+        Blend 120 g vanilla ice cream with 150 ml plant milk and 30 g peanut
+        butter until smooth. Serve with a drizzle of peanut butter on top.
+      </details>
+    </div>
+
+    <div class="item" data-ingredients="vanilla ice cream,plant milk,nutella">
+      <strong>Hazelnut Milkshake</strong>
+      <div class="meta">
+        Nutella, vegan vanilla ice cream, plant milk — Creamy, chocolatey, nutty
+      </div>
+      <details>
+        <summary>Instructions</summary>
+        Blend 60 g (≈2 Tbsp) Nutella with 120 g vegan vanilla ice cream and 150 ml barista-style plant milk until
+        smooth.
+        Pour into a chilled glass, then top with a swirl of Nutella or a sprinkle of chopped hazelnuts.
+      </details>
+    </div>
+
+    <div class="item" data-ingredients="nutella,banana,vanilla ice cream,plant milk">
+      <strong>Banana Hazelnut Milkshake</strong>
+      <div class="meta">
+        Nutella, banana, vegan vanilla ice cream, plant milk — Creamy, chocolatey, fruity
+      </div>
+      <details>
+        <summary>Instructions</summary>
+        Blend 60 g Nutella, 1 ripe banana, 120 g vegan vanilla ice cream and 150 ml barista-style plant milk until
+        smooth.
+        Pour into a chilled glass and garnish with a banana slice or a drizzle of Nutella.
+      </details>
+    </div>
+
+    <div class="item" data-ingredients="orange juice,double cream,vanilla extract,ice">
       <strong>Creamy Citrus Shake</strong>
       <div class="meta">
         Orange juice, double cream, vanilla extract, ice — Silky, citrus,
@@ -679,7 +745,7 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="banana:1,cocoa powder:1,espresso:1,ice:1">
+    <div class="item" data-ingredients="banana,cocoa powder,espresso,ice">
       <strong>Mocha Banana Blitz</strong>
       <div class="meta">
         Banana, cocoa powder, espresso, ice — Bold, creamy, energising
@@ -692,7 +758,7 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="peach iced tea:1,vanilla ice cream:1,ice:1">
+    <div class="item" data-ingredients="peach iced tea,vanilla ice cream,ice">
       <strong>Peach Tea Cream Float</strong>
       <div class="meta">
         Peach iced tea, vanilla ice cream, whipped cream, ice — Creamy,
@@ -705,7 +771,7 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="pineapple juice:1,banana:1,ice:1">
+    <div class="item" data-ingredients="pineapple juice,banana,ice">
       <strong>Tropical Nice Cream</strong>
       <div class="meta">
         Pineapple juice, banana, ice — Frozen, fruity, light
@@ -717,7 +783,7 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="coke zero:1,vanilla ice cream:1">
+    <div class="item" data-ingredients="coke zero,vanilla ice cream">
       <strong>Vanilla Cola Float</strong>
       <div class="meta">
         Coke Zero, vanilla ice cream — Classic, bubbly, rich
@@ -729,7 +795,7 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="creamed coconut:1,ice:1,elderflower cordial:1">
+    <div class="item" data-ingredients="creamed coconut,ice,elderflower cordial">
       <strong>Coconut Ice Swirl</strong>
       <div class="meta">
         Creamed coconut, ice, elderflower cordial — Chilled, tropical, lush
@@ -741,7 +807,7 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="vanilla ice cream:1,plant milk:1,caramel flavour:1,ice:1">
+    <div class="item" data-ingredients="vanilla ice cream,plant milk,caramel flavour,ice">
       <strong>Caramel Milkshake</strong>
       <div class="meta">
         Vanilla ice cream, plant milk, caramel flavour, ice — Creamy, sweet,
@@ -754,7 +820,7 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="vanilla ice cream:1,plant milk:1,peppermint extract:1,ice:1">
+    <div class="item" data-ingredients="vanilla ice cream,plant milk,peppermint extract,ice">
       <strong>Peppermint Shake</strong>
       <div class="meta">
         Vanilla ice cream, plant milk, peppermint extract, ice — Cool, minty,
@@ -771,7 +837,7 @@
   <div id="smoothies" class="category">
     <h2>Smoothies &amp; Coolers</h2>
 
-    <div class="item" data-ingredients="banana:1,plant milk:1,vanilla ice cream:1,ice:1">
+    <div class="item" data-ingredients="banana,plant milk,vanilla ice cream,ice">
       <strong>Banana Cream Smoothie</strong>
       <div class="meta">
         Banana, plant milk, vanilla ice cream, ice — Creamy, mellow, sweet
@@ -782,7 +848,7 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="banana:1,plant milk:1,ice:1">
+    <div class="item" data-ingredients="banana,plant milk,ice">
       <strong>Banana Smoothie</strong>
       <div class="meta">
         Banana, plant milk, ice — Creamy, simple, smooth
@@ -793,7 +859,7 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="mango juice:1,plant milk:1,ice:1">
+    <div class="item" data-ingredients="mango juice,plant milk,ice">
       <strong>Mango Smoothie</strong>
       <div class="meta">
         Mango juice, plant milk, ice — Tropical, creamy, fresh
@@ -804,7 +870,7 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="pineapple juice:1,plant milk:1,ice:1">
+    <div class="item" data-ingredients="pineapple juice,plant milk,ice">
       <strong>Pineapple Smoothie</strong>
       <div class="meta">
         Pineapple juice, plant milk, ice — Tangy, creamy, bright
@@ -816,7 +882,7 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="orange juice:1,plant milk:1,ice:1">
+    <div class="item" data-ingredients="orange juice,plant milk,ice">
       <strong>Orange Smoothie</strong>
       <div class="meta">
         Orange juice, plant milk, ice — Citrus, creamy, vibrant
@@ -827,7 +893,7 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="banana:1,mango juice:1,plant milk:1,ice:1">
+    <div class="item" data-ingredients="banana,mango juice,plant milk,ice">
       <strong>Mixed Fruit Smoothie</strong>
       <div class="meta">
         Banana, mango juice, plant milk, ice — Fruity, smooth, refreshing
@@ -838,7 +904,7 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="pineapple juice:1,orange juice:1,ice:1">
+    <div class="item" data-ingredients="pineapple juice,orange juice,ice">
       <strong>Tropical Cooler</strong>
       <div class="meta">
         Pineapple juice, orange juice, ice — Tangy, fresh, smooth
@@ -849,7 +915,7 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="ginger dram:1,lime juice:1,coke zero:1,ice:1">
+    <div class="item" data-ingredients="ginger dram,lime juice,coke zero,ice">
       <strong>Zesty Cooler</strong>
       <div class="meta">
         Ginger Dram, lime juice, Coke Zero, ice — Zippy, spicy, crisp
@@ -861,7 +927,7 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="mango juice:1,lime juice:1,lemonade:1,ice:1">
+    <div class="item" data-ingredients="mango juice,lime juice,lemonade,ice">
       <strong>Mango Cooler</strong>
       <div class="meta">
         Mango juice, lime juice, lemonade, ice — Cool, juicy, mellow
@@ -877,7 +943,7 @@
   <div id="hot" class="category">
     <h2>Hot Drinks</h2>
 
-    <div class="item" data-ingredients="espresso:1">
+    <div class="item" data-ingredients="espresso">
       <strong>Espresso</strong>
       <div class="meta">Coffee beans — Bold, short, strong</div>
       <details>
@@ -886,7 +952,7 @@
       </details>
     </div>
 
-    <div class="item" data-ingredients="espresso:1">
+    <div class="item" data-ingredients="espresso">
       <strong>Americano</strong>
       <div class="meta">Espresso, hot water — Smooth, bold, simple</div>
       <details>
@@ -1122,23 +1188,23 @@
 
   <div id="lollies" class="category">
     <h2>Ice Creams & Lollies</h2>
-    <div class="item" data-ingredients="currant pop:1">
+    <div class="item" data-ingredients="currant pop">
       <strong>Apple &amp; Blackcurrant Ice Pop</strong>
       <div class="meta">Fruity, refreshing, icy</div>
     </div>
-    <div class="item" data-ingredients="orange pop:1">
+    <div class="item" data-ingredients="orange pop">
       <strong>Orange Ice Pop</strong>
       <div class="meta">Citrusy, zesty, icy</div>
     </div>
-    <div class="item" data-ingredients="summer pop:1">
+    <div class="item" data-ingredients="summer pop">
       <strong>Summer Fruits Ice Pop</strong>
       <div class="meta">Fruity, refreshing, icy</div>
     </div>
-    <div class="item" data-ingredients="apple pop:1">
+    <div class="item" data-ingredients="apple pop">
       <strong>Apple Ice Pop</strong>
       <div class="meta">Crisp, sweet, icy</div>
     </div>
-    <div class="item" data-ingredients="magnum:1">
+    <div class="item" data-ingredients="magnum">
       <strong>Classic Magnum</strong>
       <div class="meta">Rich, creamy, indulgent</div>
     </div>
@@ -1146,40 +1212,40 @@
 
   <div id="snacks" class="category">
     <h2>Snacks</h2>
-    <div class="item" data-ingredients="paprika crisps:1">
+    <div class="item" data-ingredients="paprika crisps">
       <strong>Crinkle Cut Paprika Crisps</strong>
       <div class="meta">Crispy, smoky, paprika-flavoured</div>
     </div>
-    <div class="item" data-ingredients="salted crisps:1">
+    <div class="item" data-ingredients="salted crisps">
       <strong>Crinkle Cut Salted Crisps</strong>
       <div class="meta">Crispy, salty, classic</div>
     </div>
-    <div class="item" data-ingredients="pepper crisps:1">
+    <div class="item" data-ingredients="pepper crisps">
       <strong>Salt &amp; Pepper Crisps</strong>
       <div class="meta">Crispy, peppery, classic</div>
     </div>
-    <div class="item" data-ingredients="triskis:1">
+    <div class="item" data-ingredients="triskis">
       <strong>Triskis - Maize Corn Hoop Crisps</strong>
       <div class="meta">Crispy, light, corn-flavoured</div>
     </div>
-    <div class="item" data-ingredients="corn:1">
+    <div class="item" data-ingredients="corn">
       <strong>Fried Corn</strong>
       <div class="meta">Crispy, golden, addictive</div>
     </div>
-    <div class="item" data-ingredients="popcorn:1">
+    <div class="item" data-ingredients="popcorn">
       <strong>Popcorn</strong>
       <div class="meta">Flavours: Salted, Sweet & Salted, Sweet, Caramel, Dark Chocolate, Marshmallow, Cheese, Chilli,
         Cinnamon Sugar, Oregano Basil</div>
     </div>
-    <div class="item" data-ingredients="peanuts:1">
+    <div class="item" data-ingredients="peanuts">
       <strong>Roasted Salted Peanuts</strong>
       <div class="meta">Nutty, crunchy, salty</div>
     </div>
-    <div class="item" data-ingredients="breadsticks:1">
+    <div class="item" data-ingredients="breadsticks">
       <strong>Breadsticks</strong>
       <div class="meta">Crispy, baked, classic</div>
     </div>
-    <div class="item" data-ingredients="edamame:1">
+    <div class="item" data-ingredients="edamame">
       <strong>Salted Edamame</strong>
       <div class="meta">Savoury, tender, healthy</div>
     </div>
@@ -1187,19 +1253,19 @@
 
   <div id="breakfast" class="category">
     <h2>Breakfast</h2>
-    <div class="item" data-ingredients="pancakes:1">
+    <div class="item" data-ingredients="pancakes">
       <strong>Protein Pancakes</strong>
       <div class="meta">Fluffy, protein-packed, sweet</div>
     </div>
-    <div class="item" data-ingredients="croissant:1">
+    <div class="item" data-ingredients="croissant">
       <strong>Croissant</strong>
       <div class="meta">Buttery, flaky, classic</div>
     </div>
-    <div class="item" data-ingredients="pain au chocolat:1">
+    <div class="item" data-ingredients="pain au chocolat">
       <strong>Pain au Chocolat</strong>
       <div class="meta">Rich, buttery, chocolate-filled</div>
     </div>
-    <div class="item" data-ingredients="cinnamon swirl:1">
+    <div class="item" data-ingredients="cinnamon swirl">
       <strong>Cinnamon Swirl</strong>
       <div class="meta">Sweet, spiced, flaky</div>
     </div>
@@ -1208,61 +1274,61 @@
 
   <div id="mains" class="category">
     <h2>Mains</h2>
-    <div class="item" data-ingredients="rigatoni carbonara:1">
+    <div class="item" data-ingredients="rigatoni carbonara">
       <strong>Rigatoni Carbonara</strong>
       <div class="meta">Creamy, cheesy, comforting</div>
     </div>
-    <div class="item" data-ingredients="spring green orzo:1" data-recipient="Ewa">
+    <div class="item" data-ingredients="spring green orzo" data-recipient="Ewa">
       <strong>Spring Green Orzo</strong>
       <div class="meta">Fresh, vibrant, herby</div>
     </div>
-    <div class="item" data-ingredients="golden roast potatoes:1" data-recipient="Maria">
+    <div class="item" data-ingredients="golden roast potatoes" data-recipient="Maria">
       <strong>Golden Roast Potatoes</strong>
       <div class="meta">Crispy, fluffy, comforting</div>
     </div>
-    <div class="item" data-ingredients="buddha bowl:1" data-recipient="Ewa">
+    <div class="item" data-ingredients="buddha bowl" data-recipient="Ewa">
       <strong>Buddha Bowl</strong>
       <div class="meta">Wholesome, vibrant, nourishing</div>
     </div>
-    <div class="item" data-ingredients="roast dinner:1">
+    <div class="item" data-ingredients="roast dinner">
       <strong>Roast Dinner</strong>
       <div class="meta">Classic, hearty, comforting</div>
     </div>
-    <div class="item" data-ingredients="rainbow tofu bowl:1" data-recipient="Ewa">
+    <div class="item" data-ingredients="rainbow tofu bowl" data-recipient="Ewa">
       <strong>Rainbow Tofu Bowl</strong>
       <div class="meta">Vibrant, fresh, nourishing</div>
     </div>
 
-    <div class="item" data-ingredients="mushroom stroganoff:1" data-recipient="Ewa">
+    <div class="item" data-ingredients="mushroom stroganoff" data-recipient="Ewa">
       <strong>Mushroom Stroganoff</strong>
       <div class="meta">Creamy, earthy, comforting</div>
     </div>
-    <div class="item" data-ingredients="sweetcorn & smoky bacon bake:1" data-recipient="Maria">
+    <div class="item" data-ingredients="sweetcorn & smoky bacon bake" data-recipient="Maria">
       <strong>Sweetcorn &amp; Smoky ‘Bacon’ Bake</strong>
       <div class="meta">Creamy, smoky, comforting</div>
     </div>
-    <div class="item" data-ingredients="cauli korma:1" data-recipient="Maria">
+    <div class="item" data-ingredients="cauli korma" data-recipient="Maria">
       <strong>Cauli Korma</strong>
       <div class="meta">Creamy, spiced, comforting</div>
     </div>
-    <div class="item" data-ingredients="not-a-chicken tikka masala:1" data-recipient="Maria">
+    <div class="item" data-ingredients="not-a-chicken tikka masala" data-recipient="Maria">
       <strong>Not-a-Chicken Tikka Masala</strong>
       <div class="meta">Creamy, spiced, comforting</div>
     </div>
 
-    <div class="item" data-ingredients="jerk tofu bowl:1" data-recipient="Ewa">
+    <div class="item" data-ingredients="jerk tofu bowl" data-recipient="Ewa">
       <strong>Jerk Tofu Bowl</strong>
       <div class="meta">Spicy, vibrant, nourishing</div>
     </div>
-    <div class="item" data-ingredients="lebanese style bowl:1">
+    <div class="item" data-ingredients="lebanese style bowl">
       <strong>Lebanese Style Bowl</strong>
       <div class="meta">Fresh, herby, vibrant</div>
     </div>
-    <div class="item" data-ingredients="polpette alfredo:1" data-recipient="Maria">
+    <div class="item" data-ingredients="polpette alfredo" data-recipient="Maria">
       <strong>Polpette Alfredo</strong>
       <div class="meta">Creamy, cheesy, comforting</div>
     </div>
-    <div class="item" data-ingredients="yaki-miso udon noodles:1" data-recipient="Ewa">
+    <div class="item" data-ingredients="yaki-miso udon noodles" data-recipient="Ewa">
       <strong>Yaki-Miso Udon Noodles</strong>
       <div class="meta">Savory, umami, comforting</div>
     </div>
@@ -1270,19 +1336,19 @@
 
   <div id="desserts" class="category">
     <h2>Desserts</h2>
-    <div class="item" data-ingredients="beetroot red velvet cake:1" data-recipient="Ewa">
+    <div class="item" data-ingredients="beetroot red velvet cake" data-recipient="Ewa">
       <strong>Beetroot Red Velvet Cake</strong>
       <div class="meta">Rich, moist, indulgent</div>
     </div>
-    <div class="item" data-ingredients="chocolate & hazelnut fondant:1">
+    <div class="item" data-ingredients="chocolate & hazelnut fondant">
       <strong>Chocolate &amp; Hazelnut Fondant</strong>
       <div class="meta">Rich, gooey, decadent</div>
     </div>
-    <div class="item" data-ingredients="cheesecake:1">
+    <div class="item" data-ingredients="cheesecake">
       <strong>Vanilla Cookies &amp; Cream Cheesecake</strong>
       <div class="meta">Creamy, sweet, indulgent</div>
     </div>
-    <div class="item" data-ingredients="zillionaire:1">
+    <div class="item" data-ingredients="zillionaire">
       <strong>Zillionaire's Cheesecake</strong>
       <div class="meta">Rich, decadent, indulgent</div>
     </div>
