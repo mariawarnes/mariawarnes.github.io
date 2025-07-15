@@ -270,6 +270,9 @@
     <input type="number" name="vanilla extract" value="1" />
     <input type="number" name="ginger dram" value="1" />
     <input type="number" name="coke zero" value="1" />
+    <input type="number" name="ginger beer" value="0" />
+    <input type="number" name="apple cider vinegar" value="0" />
+    <input type="number" name="tea" value="1" />
 
     <!-- grams -->
     <input type="number" name="creamed coconut" value="1" />
@@ -278,7 +281,7 @@
     <input type="number" name="cocoa powder" value="1" />
     <input type="number" name="espresso" value="1" />
     <input type="number" name="vanilla ice cream" value="0" />
-    <input type="number" name="paprika crisps" value="1" />
+    <input type="number" name="paprika crisps" value="0" />
     <input type="number" name="salted crisps" value="1" />
     <input type="number" name="pepper crisps" value="1" />
     <input type="number" name="triskis" value="1" />
@@ -394,18 +397,16 @@
 
   <div id="classic" class="category">
     <h2>Classic Mocktails</h2>
-    <div class="item" data-ingredients="peach syrup,lemon juice,orange juice,pineapple juice,lemonade">
+    <div class="item" data-ingredients="peach syrup,orange juice,pineapple juice,lemonade">
       <strong>Hugs on the Beach</strong>
       <div class="meta">
-        Lemonade, peach syrup, lemon juice, orange juice, pineapple juice —
+        Lemonade, peach syrup, orange juice, pineapple juice —
         Crisp, fruity, tropical
       </div>
       <details>
         <summary>Instructions</summary>
-        Place 20 ml peach syrup, 20 ml lemon juice, 40 ml orange juice, 20 ml
-        pineapple juice and 40 ml soda lemonade into a large jug. Stir briskly in a jug with a long spoon for about 20
-        s.
-        Pour into a chilled glass over fresh ice and garnish with a lemon
+        Add 20 ml peach syrup, 40 ml orange juice, 20 ml pineapple juice and 60 ml lemonade
+        into a chilled glass over fresh ice and garnish with a lemon
         twist.
       </details>
     </div>
@@ -416,8 +417,8 @@
       </div>
       <details>
         <summary>Instructions</summary>
-        Shake 20ml lime juice, 20ml cordial and 50ml orange juice with ice.
-        Strain and garnish.
+        Add 20 ml lime juice, 20 ml elderflower cordial and 50 ml orange juice to a jar or container with ice. Stir
+        well, then strain (or pour) into a glass. Garnish with a lime wedge.
       </details>
     </div>
     <div class="item" data-ingredients="creamed coconut,pineapple juice,orange juice">
@@ -427,21 +428,20 @@
       </div>
       <details>
         <summary>Instructions</summary>
-        Soften 30 g creamed coconut by stirring it with 20 ml warm water until smooth.
-        Combine with 120 ml orange juice and 60 ml pineapple juice in a lidded jar or container with ice.
-        Seal and shake vigorously for 10 s, then strain into a chilled glass over fresh ice.
-        Garnish with a pineapple wedge.
+        Soften 30 g creamed coconut by stirring it with 20 ml warm water until smooth. Add 120 ml orange juice and 60 ml
+        pineapple juice with ice to a jar or container. Shake or stir vigorously for 10 seconds, then pour into a glass
+        over fresh ice. Garnish with a pineapple wedge.
       </details>
     </div>
-    <div class="item" data-ingredients="crodino,tonic water">
+    <div class="item" data-ingredients="crodino|aperitivo,tonic water">
       <strong>Mockerol Spritz</strong>
       <div class="meta">
-        Crodino/Aperitivo, tonic water — Bitter, refreshing, Italian
+        Crodino or Aperitivo, tonic water — Bitter, refreshing, Italian
       </div>
       <details>
         <summary>Instructions</summary>
-        Pour 100 ml Crodino/Aperitivo over ice in a wine glass, top with 100 ml tonic water, and garnish with an orange
-        slice.
+        Pour 100 ml Crodino or Aperitivo over ice in a wine glass, top with 100 ml tonic water, and garnish with an
+        orange slice.
       </details>
     </div>
     <div class="item" data-ingredients="creamed coconut,pineapple juice,vanilla extract">
@@ -451,8 +451,8 @@
       </div>
       <details>
         <summary>Instructions</summary>
-        Blend 2 tbsp creamed coconut with 150ml pineapple juice and a drop of
-        vanilla extract until smooth.
+        Blend 2 tbsp (about 30 g) creamed coconut with 150 ml pineapple juice and a drop (about 1/4 tsp) vanilla extract
+        until smooth. Serve over ice.
       </details>
     </div>
     <div class="item" data-ingredients="dried mint,lime juice,elderflower cordial,tonic water">
@@ -463,8 +463,8 @@
       </div>
       <details>
         <summary>Instructions</summary>
-        Rehydrate 1 tsp dried mint in 15ml warm water for 5 min. Add 15ml lime
-        juice and 15ml cordial, top with 150ml tonic water over ice.
+        Rehydrate 1 tsp dried mint in 15 ml warm water for 5 minutes. Add 15 ml lime juice and 15 ml elderflower
+        cordial, then top with 150 ml tonic water over ice. Stir gently.
       </details>
     </div>
     <div class="item" data-ingredients="orange juice,mango juice,sangria syrup">
@@ -474,8 +474,8 @@
       </div>
       <details>
         <summary>Instructions</summary>
-        Pour 100ml orange juice and 50ml mango juice over ice. Layer 10ml
-        syrup, garnish.
+        Pour 100 ml orange juice and 50 ml mango juice over ice. Slowly pour 10 ml sangria syrup to create a layered
+        effect. Garnish with an orange slice.
       </details>
     </div>
     <div class="item" data-ingredients="impossibrew,lemonade,lime juice">
@@ -485,17 +485,17 @@
       </div>
       <details>
         <summary>Instructions</summary>
-        Mix 100ml Impossibrew, 100ml lemonade and 10ml lime juice over ice.
+        Mix 100 ml Impossibrew, 100 ml lemonade and 10 ml lime juice over ice. Stir and serve.
       </details>
     </div>
     <div class="item" data-ingredients="peach syrup,alcohol-free merlot">
       <strong>Belli-no</strong>
       <div class="meta">
-        peach syrup, alcohol-free merlot — Fruity, bright, bubbly
+        Peach syrup, alcohol-free merlot — Fruity, bright, bubbly
       </div>
       <details>
         <summary>Instructions</summary>
-        Pour 15ml syrup and top with 100ml merlot in a flute.
+        Pour 15 ml peach syrup into a flute glass and top with 100 ml alcohol-free merlot.
       </details>
     </div>
     <div class="item" data-ingredients="lime juice,sugar,tonic water">
@@ -505,7 +505,7 @@
       </div>
       <details>
         <summary>Instructions</summary>
-        Muddle sugar with 30ml lime juice, add 150ml tonic water over ice.
+        Muddle 1 tsp sugar with 30 ml lime juice in a glass. Add ice and top with 150 ml tonic water. Stir gently.
       </details>
     </div>
     <div class="item" data-ingredients="sugar,espresso,vanilla extract,cocoa powder">
@@ -513,9 +513,9 @@
       <div class="meta">Espresso, sugar & water, vanilla extract, plant milk — Strong, sweet, creamy</div>
       <details>
         <summary>Instructions</summary>
-        Combine 60 ml cooled espresso, 30 g granulated sugar, 30 ml water, ¼ tsp vanilla extract and 30 ml barista-style
-        plant milk in a container with ice. Stir vigorously for 10 s, until the sugar has dissolved, then strain into a
-        chilled martini glass and garnish with coffee beans.
+        Combine 60 ml cooled espresso, 30 g granulated sugar, 30 ml water, 1/4 tsp vanilla extract and 30 ml plant milk
+        in a jar or shaker with ice. Stir or shake vigorously for 10 seconds, then strain or pour into a glass. Garnish
+        with coffee beans if desired.
       </details>
     </div>
     <div class="item" data-ingredients="tonic water,lime juice,elderflower cordial">
@@ -525,7 +525,7 @@
       </div>
       <details>
         <summary>Instructions</summary>
-        Combine 150ml tonic water, 10ml lime juice, 10ml cordial over ice.
+        Combine 150 ml tonic water, 10 ml lime juice, and 10 ml elderflower cordial over ice. Stir and serve.
       </details>
     </div>
     <div class="item" data-ingredients="lime juice,lemon juice,orange juice,maple syrup,tonic water">
@@ -536,7 +536,8 @@
       </div>
       <details>
         <summary>Instructions</summary>
-        Shake juices and syrup, strain over ice, top with 150ml tonic water.
+        Add 20 ml lime juice, 10 ml lemon juice, 30 ml orange juice, and 10 ml maple syrup to a glass with ice. Stir
+        well, then top with 150 ml tonic water.
       </details>
     </div>
     <div class="item" data-ingredients="sangria syrup,alcohol-free merlot,orange juice">
@@ -547,7 +548,8 @@
       </div>
       <details>
         <summary>Instructions</summary>
-        Stir 30ml sangria syrup, 100ml merlot, 100ml orange juice over ice.
+        Stir 30 ml sangria syrup, 100 ml alcohol-free merlot, and 100 ml orange juice over ice. Serve with fruit garnish
+        if desired.
       </details>
     </div>
     <div class="item" data-ingredients="mango juice,lime juice,peach syrup,vanilla extract">
@@ -557,7 +559,8 @@
       </div>
       <details>
         <summary>Instructions</summary>
-        Shake juices, syrup and extract with ice.
+        Shake or stir 50 ml mango juice, 10 ml lime juice, 15 ml peach syrup, and a drop (about 1/4 tsp) vanilla extract
+        with ice. Strain or pour into a glass.
       </details>
     </div>
     <div class="item" data-ingredients="orange juice,tonic water">
@@ -567,9 +570,20 @@
       </div>
       <details>
         <summary>Instructions</summary>
-        Chill a flute or wine glass.
-        Pour 60 ml orange juice, then top with 60 ml chilled tonic water.
-        Stir very gently to preserve the bubbles and garnish with an orange twist.
+        Pour 60 ml orange juice into a flute or wine glass, then top with 60 ml chilled tonic water. Stir gently and
+        garnish with an orange twist.
+      </details>
+    </div>
+    <div class="item" data-ingredients="tea,apple cider vinegar,ginger beer,lemon juice">
+      <strong>Long Island Iced Tea</strong>
+      <div class="meta">
+        English Breakfast tea, apple cider vinegar, ginger beer, lemon juice —
+        Spicy, tangy, refreshing
+      </div>
+      <details>
+        <summary>Instructions</summary>
+        Brew 1 English Breakfast tea bag in 75 ml boiling water for 5 minutes. Remove the bag and let the tea cool. Mix
+        with 7.5 ml apple cider vinegar, 75 ml ginger beer, and 7.5 ml lemon juice over ice. Stir gently.
       </details>
     </div>
   </div>
